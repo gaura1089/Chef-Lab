@@ -1,0 +1,38 @@
+[root@ip-172-31-41-30 home]# history
+    1  wget https://packages.chef.io/files/stable/chef-workstation/0.4.2/el/7/chef-workstation-0.4.2-1.el6.x86_64.rpm
+    2  yum install chef-workstation-0.4.2-1.el6.x86_64.rpm -y
+    3  chef -v
+    4  yum install -y libxcrypt-compat
+    5  chef -v
+    6  ls
+    7  mkdir cookbooks
+    8  ls
+    9  cd cookbooks
+   10  chef generate cookbook apachebook
+   11  ls
+   12  cd apachebook
+   13  chef generate recipe apacheserver
+   14  cd ..
+   15  tree
+   16  yum install tree -y
+   17  tree
+   18  vi apachebook/recipes/apacheserver.rb
+   19  cat apachebook/recipes/apacheserver.rb
+   20  chef exec ruby -c apachebook/recipes/apacheserver.rb
+   21  vi apachebook/recipes/apacheserver.rb
+   22  chef exec ruby -c apachebook/recipes/apacheserver.rb
+   23  chef-client -zr recip[apachebook::apacheserver]
+   24  chef-client -zr 'recipe[apachebook::apacheserver]'
+   25  vi apachebook/recipes/apacheserver.rb
+   26  chef exec ruby -c apachebook/recipes/apacheserver.rb
+   27  chef-client -zr 'recipe[apachebook::apacheserver]'
+   28  cat apachebook/recipes/apacheserver.rb
+   29  ls
+   30  cd ..
+   31  /home
+   32  pwd
+   33  cd ..
+   34  ls
+   35  ls -l
+   36  history
+[root@ip-172-31-41-30 home]#

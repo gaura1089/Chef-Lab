@@ -1,0 +1,669 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\Gaurav.26> cd downloads\repo
+PS C:\Users\Gaurav.26\downloads\repo> ls
+
+
+    Directory: C:\Users\Gaurav.26\downloads\repo
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        04-09-2025     06:07                Beckend
+d-----        22-09-2025     17:52                Linux-mac
+d-----        04-09-2025     06:01                machine-terra
+-a----        03-09-2025     23:11         102306 BlockAccessTo-Centene.png
+-a----        09-09-2025     05:26           4247 PassGen.html
+
+
+PS C:\Users\Gaurav.26\downloads\repo> cd .\Linux-mac\
+PS C:\Users\Gaurav.26\downloads\repo\Linux-mac> ls
+
+
+    Directory: C:\Users\Gaurav.26\downloads\repo\Linux-mac
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        07-09-2025     19:05                .terraform
+-a----        04-09-2025     22:02           1377 .terraform.lock.hcl
+-a----        22-09-2025     17:52            224 .terraform.tfstate.lock.info
+-a----        07-09-2025     20:03              0 Dj.txt
+-a----        04-09-2025     21:48           2635 id_rsa
+-a----        04-09-2025     21:48            594 id_rsa.pub
+-a----        04-09-2025     22:03            120 keypair.tf
+-a----        08-09-2025     09:51            250 main.tf
+-a----        04-09-2025     21:46             52 provider.tf
+-a----        22-09-2025     14:19           6718 terraform.tfstate
+-a----        22-09-2025     14:19            183 terraform.tfstate.backup
+
+
+PS C:\Users\Gaurav.26\downloads\repo\Linux-mac>
+PS C:\Users\Gaurav.26\downloads\repo\Linux-mac> ssh -i id_rsa ec2-user@13.235.248.50
+The authenticity of host '13.235.248.50 (13.235.248.50)' can't be established.
+ED25519 key fingerprint is SHA256:UG37DjsWlQI2zc0WNWLduGdwv5bQU3i3bF7g9lrUgf0.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '13.235.248.50' (ED25519) to the list of known hosts.
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+[ec2-user@ip-172-31-41-30 ~]$ sudo su
+[root@ip-172-31-41-30 ec2-user]#
+[root@ip-172-31-41-30 ec2-user]# wget https://packages.chef.io/files/stable/chef-workstation/0.4.2/el/7/chef-workstation-0.4.2-1.el6.x86_64.rpm
+--2025-09-22 12:25:10--  https://packages.chef.io/files/stable/chef-workstation/0.4.2/el/7/chef-workstation-0.4.2-1.el6.x86_64.rpm
+Resolving packages.chef.io (packages.chef.io)... 151.101.209.55
+Connecting to packages.chef.io (packages.chef.io)|151.101.209.55|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 141455539 (135M) [application/x-rpm]
+Saving to: ‘chef-workstation-0.4.2-1.el6.x86_64.rpm’
+
+chef-workstation-0.4.2-1.el6.x86_64.rp 100%[============================================================================>] 134.90M   127MB/s    in 1.1s
+
+2025-09-22 12:25:12 (127 MB/s) - ‘chef-workstation-0.4.2-1.el6.x86_64.rpm’ saved [141455539/141455539]
+
+[root@ip-172-31-41-30 ec2-user]# yum install chef-workstation-0.4.2-1.el6.x86_64.rpm -y
+Amazon Linux 2023 Kernel Livepatch repository                                                                               217 kB/s |  23 kB     00:00
+Dependencies resolved.
+============================================================================================================================================================
+ Package                                   Architecture                    Version                              Repository                             Size
+============================================================================================================================================================
+Installing:
+ chef-workstation                          x86_64                          0.4.2-1.el6                          @commandline                          135 M
+
+Transaction Summary
+============================================================================================================================================================
+Install  1 Package
+
+Total size: 135 M
+Installed size: 644 M
+Downloading Packages:
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                                                    1/1
+  Running scriptlet: chef-workstation-0.4.2-1.el6.x86_64                                                                                                1/1
+  Installing       : chef-workstation-0.4.2-1.el6.x86_64                                                                                                1/1
+  Running scriptlet: chef-workstation-0.4.2-1.el6.x86_64                                                                                                1/1
+
+To run the experimental Chef Workstation App, use your
+platform's package manager to install these dependencies:
+
+        libgtk-3.so.0 => not found
+        libgdk-3.so.0 => not found
+        libpangocairo-1.0.so.0 => not found
+        libpango-1.0.so.0 => not found
+        libatk-1.0.so.0 => not found
+        libcairo.so.2 => not found
+        libgdk_pixbuf-2.0.so.0 => not found
+        libX11-xcb.so.1 => not found
+        libxcb.so.1 => not found
+        libXi.so.6 => not found
+        libXcursor.so.1 => not found
+        libXdamage.so.1 => not found
+        libXrandr.so.2 => not found
+        libXcomposite.so.1 => not found
+        libXext.so.6 => not found
+        libXfixes.so.3 => not found
+        libXrender.so.1 => not found
+        libX11.so.6 => not found
+        libXtst.so.6 => not found
+        libXss.so.1 => not found
+        libgconf-2.so.4 => not found
+        libasound.so.2 => not found
+        libcups.so.2 => not found
+        libfontconfig.so.1 => not found
+You can then launch the App by running 'chef-workstation-app'.
+The App will then be available in the system tray.
+
+Thank you for installing Chef Workstation!
+You can find some tips on getting started at https://chef.sh/
+
+
+  Verifying        : chef-workstation-0.4.2-1.el6.x86_64                                                                                                1/1
+============================================================================================================================================================
+WARNING:
+  A newer release of "Amazon Linux" is available.
+
+  Available Versions:
+
+  Version 2023.8.20250908:
+    Run the following command to upgrade to 2023.8.20250908:
+
+      dnf upgrade --releasever=2023.8.20250908
+
+    Release notes:
+     https://docs.aws.amazon.com/linux/al2023/release-notes/relnotes-2023.8.20250908.html
+
+  Version 2023.8.20250915:
+    Run the following command to upgrade to 2023.8.20250915:
+
+      dnf upgrade --releasever=2023.8.20250915
+
+    Release notes:
+     https://docs.aws.amazon.com/linux/al2023/release-notes/relnotes-2023.8.20250915.html
+
+============================================================================================================================================================
+
+Installed:
+  chef-workstation-0.4.2-1.el6.x86_64
+
+Complete!
+[root@ip-172-31-41-30 ec2-user]# chef -v
+/opt/chef-workstation/embedded/bin/ruby: error while loading shared libraries: libcrypt.so.1: cannot open shared object file: No such file or directory
+[root@ip-172-31-41-30 ec2-user]# yum install -y libxcrypt-compat
+Last metadata expiration check: 0:01:19 ago on Mon Sep 22 12:25:50 2025.
+Dependencies resolved.
+============================================================================================================================================================
+ Package                                 Architecture                  Version                                     Repository                          Size
+============================================================================================================================================================
+Installing:
+ libxcrypt-compat                        x86_64                        4.4.33-7.amzn2023                           amazonlinux                         92 k
+
+Transaction Summary
+============================================================================================================================================================
+Install  1 Package
+
+Total download size: 92 k
+Installed size: 198 k
+Downloading Packages:
+libxcrypt-compat-4.4.33-7.amzn2023.x86_64.rpm                                                                               2.1 MB/s |  92 kB     00:00
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                       1.2 MB/s |  92 kB     00:00
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                                                    1/1
+  Installing       : libxcrypt-compat-4.4.33-7.amzn2023.x86_64                                                                                          1/1
+  Running scriptlet: libxcrypt-compat-4.4.33-7.amzn2023.x86_64                                                                                          1/1
+  Verifying        : libxcrypt-compat-4.4.33-7.amzn2023.x86_64                                                                                          1/1
+============================================================================================================================================================
+WARNING:
+  A newer release of "Amazon Linux" is available.
+
+  Available Versions:
+
+  Version 2023.8.20250908:
+    Run the following command to upgrade to 2023.8.20250908:
+
+      dnf upgrade --releasever=2023.8.20250908
+
+    Release notes:
+     https://docs.aws.amazon.com/linux/al2023/release-notes/relnotes-2023.8.20250908.html
+
+  Version 2023.8.20250915:
+    Run the following command to upgrade to 2023.8.20250915:
+
+      dnf upgrade --releasever=2023.8.20250915
+
+    Release notes:
+     https://docs.aws.amazon.com/linux/al2023/release-notes/relnotes-2023.8.20250915.html
+
+============================================================================================================================================================
+
+Installed:
+  libxcrypt-compat-4.4.33-7.amzn2023.x86_64
+
+Complete!
+[root@ip-172-31-41-30 ec2-user]# chef -v
+Chef Workstation: 0.4.2
+  chef-run: .chef-workstation/config.toml.
+  chef-client: 15.0.300
+  delivery-cli: 0.0.52 (9d07501a3b347cc687c902319d23dc32dd5fa621)
+  berks: 7.0.8
+  test-kitchen: 2.2.5
+  inspec: 4.3.2
+[root@ip-172-31-41-30 ec2-user]# ls
+chef-workstation-0.4.2-1.el6.x86_64.rpm
+[root@ip-172-31-41-30 ec2-user]# mkdir cookbooks
+[root@ip-172-31-41-30 ec2-user]# ls
+chef-workstation-0.4.2-1.el6.x86_64.rpm  cookbooks
+[root@ip-172-31-41-30 ec2-user]# cd cookbooks
+[root@ip-172-31-41-30 cookbooks]# chef generate cookbook apachebook
++---------------------------------------------+
+            Chef License Acceptance
+
+Before you can continue, 3 product licenses
+must be accepted. View the license at
+https://www.chef.io/end-user-license-agreement/
+
+Licenses that need accepting:
+  * Chef Workstation
+  * Chef Infra Client
+  * Chef InSpec
+
+Do you accept the 3 product licenses (yes/no)?
+
+> yes
+
+Persisting 3 product licenses...
+✔ 3 product licenses persisted.
+
++---------------------------------------------+
+Generating cookbook apachebook
+- Ensuring correct cookbook content
+
+Your cookbook is ready. Type `cd apachebook` to enter it.
+
+There are several commands you can run to get started locally developing and testing your cookbook.
+Type `delivery local --help` to see a full list of local testing commands.
+
+Why not start by writing an InSpec test? Tests for the default recipe are stored at:
+
+test/integration/default/default_test.rb
+
+If you'd prefer to dive right in, the default recipe can be found at:
+
+recipes/default.rb
+
+[root@ip-172-31-41-30 cookbooks]# ls
+apachebook
+[root@ip-172-31-41-30 cookbooks]# cd apachebook
+[root@ip-172-31-41-30 apachebook]# chef generate recipe apacheserver
+Recipe: code_generator::recipe
+  * directory[/home/ec2-user/cookbooks/apachebook/spec/unit/recipes] action create (up to date)
+  * cookbook_file[/home/ec2-user/cookbooks/apachebook/spec/spec_helper.rb] action create_if_missing (up to date)
+  * template[/home/ec2-user/cookbooks/apachebook/spec/unit/recipes/apacheserver_spec.rb] action create_if_missing
+    - create new file /home/ec2-user/cookbooks/apachebook/spec/unit/recipes/apacheserver_spec.rb
+    - update content in file /home/ec2-user/cookbooks/apachebook/spec/unit/recipes/apacheserver_spec.rb from none to d44bb3
+    (diff output suppressed by config)
+    - restore selinux security context
+  * directory[/home/ec2-user/cookbooks/apachebook/test/integration/default] action create (up to date)
+  * template[/home/ec2-user/cookbooks/apachebook/test/integration/default/apacheserver_test.rb] action create_if_missing
+    - create new file /home/ec2-user/cookbooks/apachebook/test/integration/default/apacheserver_test.rb
+    - update content in file /home/ec2-user/cookbooks/apachebook/test/integration/default/apacheserver_test.rb from none to 08ec37
+    (diff output suppressed by config)
+    - restore selinux security context
+  * template[/home/ec2-user/cookbooks/apachebook/recipes/apacheserver.rb] action create
+    - create new file /home/ec2-user/cookbooks/apachebook/recipes/apacheserver.rb
+    - update content in file /home/ec2-user/cookbooks/apachebook/recipes/apacheserver.rb from none to fd6ab3
+    (diff output suppressed by config)
+    - restore selinux security context
+[root@ip-172-31-41-30 apachebook]# cd ..
+[root@ip-172-31-41-30 cookbooks]# tree
+bash: tree: command not found
+[root@ip-172-31-41-30 cookbooks]# yum install tree -y
+Last metadata expiration check: 0:03:41 ago on Mon Sep 22 12:25:50 2025.
+Dependencies resolved.
+============================================================================================================================================================
+ Package                        Architecture                     Version                                        Repository                             Size
+============================================================================================================================================================
+Installing:
+ tree                           x86_64                           1.8.0-6.amzn2023.0.2                           amazonlinux                            56 k
+
+Transaction Summary
+============================================================================================================================================================
+Install  1 Package
+
+Total download size: 56 k
+Installed size: 113 k
+Downloading Packages:
+tree-1.8.0-6.amzn2023.0.2.x86_64.rpm                                                                                        1.7 MB/s |  56 kB     00:00
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                       908 kB/s |  56 kB     00:00
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                                                    1/1
+  Installing       : tree-1.8.0-6.amzn2023.0.2.x86_64                                                                                                   1/1
+  Running scriptlet: tree-1.8.0-6.amzn2023.0.2.x86_64                                                                                                   1/1
+  Verifying        : tree-1.8.0-6.amzn2023.0.2.x86_64                                                                                                   1/1
+============================================================================================================================================================
+WARNING:
+  A newer release of "Amazon Linux" is available.
+
+  Available Versions:
+
+  Version 2023.8.20250908:
+    Run the following command to upgrade to 2023.8.20250908:
+
+      dnf upgrade --releasever=2023.8.20250908
+
+    Release notes:
+     https://docs.aws.amazon.com/linux/al2023/release-notes/relnotes-2023.8.20250908.html
+
+  Version 2023.8.20250915:
+    Run the following command to upgrade to 2023.8.20250915:
+
+      dnf upgrade --releasever=2023.8.20250915
+
+    Release notes:
+     https://docs.aws.amazon.com/linux/al2023/release-notes/relnotes-2023.8.20250915.html
+
+============================================================================================================================================================
+
+Installed:
+  tree-1.8.0-6.amzn2023.0.2.x86_64
+
+Complete!
+[root@ip-172-31-41-30 cookbooks]# tree
+.
+└── apachebook
+    ├── CHANGELOG.md
+    ├── LICENSE
+    ├── Policyfile.rb
+    ├── README.md
+    ├── chefignore
+    ├── kitchen.yml
+    ├── metadata.rb
+    ├── recipes
+    │   ├── apacheserver.rb
+    │   └── default.rb
+    ├── spec
+    │   ├── spec_helper.rb
+    │   └── unit
+    │       └── recipes
+    │           ├── apacheserver_spec.rb
+    │           └── default_spec.rb
+    └── test
+        └── integration
+            └── default
+                ├── apacheserver_test.rb
+                └── default_test.rb
+
+8 directories, 14 files
+[root@ip-172-31-41-30 cookbooks]# vi apachebook/recipes/apacheserver.rb
+[root@ip-172-31-41-30 cookbooks]# cat apachebook/recipes/apacheserver.rb
+#
+# Cookbook:: apachebook
+# Recipe:: apacheserver
+#
+# Copyright:: 2025, The Authors, All Rights Reserved.
+#
+
+
+
+package 'httpd' do
+  action :install
+end
+
+
+service 'httpd' do
+  action [:enable , :restart]
+end
+
+file '/var/www/html/index.html' do
+  content 'Welcome to my web site !'
+  action :create
+end
+
+
+
+directory '/home/mygaurav' do
+  owner 'ec2-user'
+  group 'root'
+  mode : 777
+end
+
+
+
+file '/home/myfile' do
+  owner 'root'
+  group 'root'
+  content 'this is my file'
+  action :create
+end
+
+
+[root@ip-172-31-41-30 cookbooks]# chef exec ruby -c apachebook/recipes/apacheserver.rb
+apachebook/recipes/apacheserver.rb:29: syntax error, unexpected ':', expecting end
+  mode : 777
+[root@ip-172-31-41-30 cookbooks]# vi apachebook/recipes/apacheserver.rb
+[root@ip-172-31-41-30 cookbooks]# chef exec ruby -c apachebook/recipes/apacheserver.rb
+Syntax OK
+[root@ip-172-31-41-30 cookbooks]# chef-client -zr recip[apachebook::apacheserver]
+Traceback (most recent call last):
+        19: from /usr/bin/chef-client:317:in `<main>'
+        18: from /usr/bin/chef-client:317:in `load'
+        17: from /opt/chef-workstation/embedded/lib/ruby/gems/2.6.0/gems/chef-bin-15.0.300/bin/chef-client:25:in `<top (required)>'
+        16: from /opt/chef-workstation/embedded/lib/ruby/gems/2.6.0/gems/chef-15.0.300/lib/chef/application.rb:66:in `run'
+        15: from /opt/chef-workstation/embedded/lib/ruby/gems/2.6.0/gems/chef-15.0.300/lib/chef/application/client.rb:321:in `reconfigure'
+        14: from /opt/chef-workstation/embedded/lib/ruby/gems/2.6.0/gems/chef-15.0.300/lib/chef/application.rb:57:in `reconfigure'
+        13: from /opt/chef-workstation/embedded/lib/ruby/gems/2.6.0/gems/chef-15.0.300/lib/chef/application.rb:99:in `configure_chef'
+        12: from /opt/chef-workstation/embedded/lib/ruby/gems/2.6.0/gems/mixlib-cli-2.0.6/lib/mixlib/cli.rb:230:in `parse_options'
+        11: from /opt/chef-workstation/embedded/lib/ruby/2.6.0/optparse.rb:1678:in `parse!'
+        10: from /opt/chef-workstation/embedded/lib/ruby/2.6.0/optparse.rb:1656:in `permute!'
+         9: from /opt/chef-workstation/embedded/lib/ruby/2.6.0/optparse.rb:1562:in `order!'
+         8: from /opt/chef-workstation/embedded/lib/ruby/2.6.0/optparse.rb:1568:in `parse_in_order'
+         7: from /opt/chef-workstation/embedded/lib/ruby/2.6.0/optparse.rb:1568:in `catch'
+         6: from /opt/chef-workstation/embedded/lib/ruby/2.6.0/optparse.rb:1614:in `block in parse_in_order'
+         5: from /opt/chef-workstation/embedded/lib/ruby/gems/2.6.0/gems/mixlib-cli-2.0.6/lib/mixlib/cli.rb:290:in `block (3 levels) in opt_parser'
+         4: from /opt/chef-workstation/embedded/lib/ruby/gems/2.6.0/gems/chef-15.0.300/lib/chef/application/client.rb:221:in `block in <class:Client>'
+         3: from /opt/chef-workstation/embedded/lib/ruby/gems/2.6.0/gems/chef-15.0.300/lib/chef/application/client.rb:221:in `map'
+         2: from /opt/chef-workstation/embedded/lib/ruby/gems/2.6.0/gems/chef-15.0.300/lib/chef/application/client.rb:222:in `block (2 levels) in <class:Client>'
+         1: from /opt/chef-workstation/embedded/lib/ruby/gems/2.6.0/gems/chef-15.0.300/lib/chef/application/client.rb:222:in `new'
+/opt/chef-workstation/embedded/lib/ruby/gems/2.6.0/gems/chef-15.0.300/lib/chef/run_list/run_list_item.rb:58:in `initialize': Unable to create Chef::RunList::RunListItem from String:"recip[apachebook::apacheserver]": must be recipe[] or role[] (ArgumentError)
+[root@ip-172-31-41-30 cookbooks]# chef-client -zr 'recipe[apachebook::apacheserver]'
+[2025-09-22T12:44:19+00:00] WARN: No config file found or specified on command line. Using command line options instead.
+Starting Chef Infra Client, version 15.0.300
+resolving cookbooks for run list: ["apachebook::apacheserver"]
+Synchronizing Cookbooks:
+  - apachebook (0.1.0)
+Installing Cookbook Gems:
+Compiling Cookbooks...
+Converging 5 resources
+Recipe: apachebook::apacheserver
+  * dnf_package[httpd] action install
+
+    ================================================================================
+    Error executing action `install` on resource 'dnf_package[httpd]'
+    ================================================================================
+
+    RuntimeError
+    ------------
+    dnf-helper.py had stderr output:
+
+    Errors during downloading metadata for repository 'amazonlinux':
+      - Curl error (3): URL using bad/illegal format or missing URL for https://al2023-repos-$awsregion-de612dc2.s3$dualstack.$awsregion.$awsdomain/core/mirrors/2023.8.20250818/x86_64/$mirrorlist [URL rejected: Bad hostname]
+    Traceback (most recent call last):
+      File "/usr/lib/python3.9/site-packages/dnf/repo.py", line 573, in load
+        ret = self._repo.load()
+      File "/usr/lib64/python3.9/site-packages/libdnf/repo.py", line 324, in load
+        return _repo.Repo_load(self)
+    libdnf._error.Error: Failed to download metadata for repo 'amazonlinux': Cannot prepare internal mirrorlist: Curl error (3): URL using bad/illegal format or missing URL for https://al2023-repos-$awsregion-de612dc2.s3$dualstack.$awsregion.$awsdomain/core/mirrors/2023.8.20250818/x86_64/$mirrorlist [URL rejected: Bad hostname]
+
+    During handling of the above exception, another exception occurred:
+
+    Traceback (most recent call last):
+      File "/opt/chef-workstation/embedded/lib/ruby/gems/2.6.0/gems/chef-15.0.300/lib/chef/provider/package/dnf/dnf_helper.py", line 92, in <module>
+        query(command)
+      File "/opt/chef-workstation/embedded/lib/ruby/gems/2.6.0/gems/chef-15.0.300/lib/chef/provider/package/dnf/dnf_helper.py", line 38, in query
+        sack = get_sack()
+      File "/opt/chef-workstation/embedded/lib/ruby/gems/2.6.0/gems/chef-15.0.300/lib/chef/provider/package/dnf/dnf_helper.py", line 18, in get_sack
+        base.fill_sack()
+      File "/usr/lib/python3.9/site-packages/dnf/base.py", line 406, in fill_sack
+        self._add_repo_to_sack(r)
+      File "/usr/lib/python3.9/site-packages/dnf/base.py", line 141, in _add_repo_to_sack
+        repo.load()
+      File "/usr/lib/python3.9/site-packages/dnf/repo.py", line 580, in load
+        raise dnf.exceptions.RepoError(str(e))
+    dnf.exceptions.RepoError: Failed to download metadata for repo 'amazonlinux': Cannot prepare internal mirrorlist: Curl error (3): URL using bad/illegalformat or missing URL for https://al2023-repos-$awsregion-de612dc2.s3$dualstack.$awsregion.$awsdomain/core/mirrors/2023.8.20250818/x86_64/$mirrorlist [URL rejected: Bad hostname]
+
+    Resource Declaration:
+    ---------------------
+    # In /root/.chef/local-mode-cache/cache/cookbooks/apachebook/recipes/apacheserver.rb
+
+     10: package 'httpd' do
+     11:   action :install
+     12: end
+     13:
+
+    Compiled Resource:
+    ------------------
+    # Declared in /root/.chef/local-mode-cache/cache/cookbooks/apachebook/recipes/apacheserver.rb:10:in `from_file'
+
+    dnf_package("httpd") do
+      package_name "httpd"
+      action [:install]
+      default_guard_interpreter :default
+      declared_type :package
+      cookbook_name "apachebook"
+      recipe_name "apacheserver"
+    end
+
+    System Info:
+    ------------
+    chef_version=15.0.300
+    platform=amazon
+    platform_version=2023
+    ruby=ruby 2.6.3p62 (2019-04-16 revision 67580) [x86_64-linux]
+    program_name=/usr/bin/chef-client
+    executable=/opt/chef-workstation/bin/chef-client
+
+
+Running handlers:
+[2025-09-22T12:44:23+00:00] ERROR: Running exception handlers
+Running handlers complete
+[2025-09-22T12:44:23+00:00] ERROR: Exception handlers complete
+Chef Infra Client failed. 0 resources updated in 03 seconds
+[2025-09-22T12:44:23+00:00] FATAL: Stacktrace dumped to /root/.chef/local-mode-cache/cache/chef-stacktrace.out
+[2025-09-22T12:44:23+00:00] FATAL: Please provide the contents of the stacktrace.out file if you file a bug report
+[2025-09-22T12:44:23+00:00] FATAL: RuntimeError: dnf_package[httpd] (apachebook::apacheserver line 10) had an error: RuntimeError: dnf-helper.py had stderroutput:
+
+Errors during downloading metadata for repository 'amazonlinux':
+  - Curl error (3): URL using bad/illegal format or missing URL for https://al2023-repos-$awsregion-de612dc2.s3$dualstack.$awsregion.$awsdomain/core/mirrors/2023.8.20250818/x86_64/$mirrorlist [URL rejected: Bad hostname]
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/site-packages/dnf/repo.py", line 573, in load
+    ret = self._repo.load()
+  File "/usr/lib64/python3.9/site-packages/libdnf/repo.py", line 324, in load
+    return _repo.Repo_load(self)
+libdnf._error.Error: Failed to download metadata for repo 'amazonlinux': Cannot prepare internal mirrorlist: Curl error (3): URL using bad/illegal format or missing URL for https://al2023-repos-$awsregion-de612dc2.s3$dualstack.$awsregion.$awsdomain/core/mirrors/2023.8.20250818/x86_64/$mirrorlist [URL rejected:Bad hostname]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/chef-workstation/embedded/lib/ruby/gems/2.6.0/gems/chef-15.0.300/lib/chef/provider/package/dnf/dnf_helper.py", line 92, in <module>
+    query(command)
+  File "/opt/chef-workstation/embedded/lib/ruby/gems/2.6.0/gems/chef-15.0.300/lib/chef/provider/package/dnf/dnf_helper.py", line 38, in query
+    sack = get_sack()
+  File "/opt/chef-workstation/embedded/lib/ruby/gems/2.6.0/gems/chef-15.0.300/lib/chef/provider/package/dnf/dnf_helper.py", line 18, in get_sack
+    base.fill_sack()
+  File "/usr/lib/python3.9/site-packages/dnf/base.py", line 406, in fill_sack
+    self._add_repo_to_sack(r)
+  File "/usr/lib/python3.9/site-packages/dnf/base.py", line 141, in _add_repo_to_sack
+    repo.load()
+  File "/usr/lib/python3.9/site-packages/dnf/repo.py", line 580, in load
+    raise dnf.exceptions.RepoError(str(e))
+dnf.exceptions.RepoError: Failed to download metadata for repo 'amazonlinux': Cannot prepare internal mirrorlist: Curl error (3): URL using bad/illegal format or missing URL for https://al2023-repos-$awsregion-de612dc2.s3$dualstack.$awsregion.$awsdomain/core/mirrors/2023.8.20250818/x86_64/$mirrorlist [URL rejected: Bad hostname]
+[root@ip-172-31-41-30 cookbooks]# vi apachebook/recipes/apacheserver.rb
+[root@ip-172-31-41-30 cookbooks]# chef exec ruby -c apachebook/recipes/apacheserver.rb
+Syntax OK
+[root@ip-172-31-41-30 cookbooks]# chef-client -zr 'recipe[apachebook::apacheserver]'
+[2025-09-22T12:53:26+00:00] WARN: No config file found or specified on command line. Using command line options instead.
+Starting Chef Infra Client, version 15.0.300
+resolving cookbooks for run list: ["apachebook::apacheserver"]
+Synchronizing Cookbooks:
+  - apachebook (0.1.0)
+Installing Cookbook Gems:
+Compiling Cookbooks...
+Converging 5 resources
+Recipe: apachebook::apacheserver
+  * execute[install_httpd] action run
+    - execute dnf install -y httpd
+  * service[httpd] action enable
+    - enable service service[httpd]
+  * service[httpd] action restart
+    - restart service service[httpd]
+  * file[/var/www/html/index.html] action create
+    - create new file /var/www/html/index.html
+    - update content in file /var/www/html/index.html from none to 091359
+    --- /var/www/html/index.html        2025-09-22 12:53:32.700598425 +0000
+    +++ /var/www/html/.chef-index20250922-27409-158agsu.html    2025-09-22 12:53:32.700598425 +0000
+    @@ -1 +1,2 @@
+    +Welcome to my web site !
+    - restore selinux security context
+  * directory[/home/mygaurav] action create
+    - create new directory /home/mygaurav
+    - change mode from '' to '0777'
+    - change owner from '' to 'ec2-user'
+    - change group from '' to 'root'
+    - restore selinux security context
+  * file[/home/myfile] action create
+    - create new file /home/myfile
+    - update content in file /home/myfile from none to 66a812
+    --- /home/myfile    2025-09-22 12:53:32.790598869 +0000
+    +++ /home/.chef-myfile20250922-27409-h8f3v1 2025-09-22 12:53:32.790598869 +0000
+    @@ -1 +1,2 @@
+    +this is my file
+    - change owner from '' to 'root'
+    - change group from '' to 'root'
+    - restore selinux security context
+
+Running handlers:
+Running handlers complete
+Chef Infra Client finished, 6/6 resources updated in 05 seconds
+[root@ip-172-31-41-30 cookbooks]# cat apachebook/recipes/apacheserver.rb
+#
+# Cookbook:: apachebook
+# Recipe:: apacheserver
+#
+# Copyright:: 2025, The Authors, All Rights Reserved.
+#
+
+
+
+execute 'install_httpd' do
+  command 'dnf install -y httpd'
+  action :run
+end
+
+
+service 'httpd' do
+  action [:enable , :restart]
+end
+
+file '/var/www/html/index.html' do
+  content 'Welcome to my web site !'
+  action :create
+end
+
+
+
+directory '/home/mygaurav' do
+  owner 'ec2-user'
+  group 'root'
+  mode '777'
+end
+
+
+
+file '/home/myfile' do
+  owner 'root'
+  group 'root'
+  content 'this is my file'
+  action :create
+end
+
+
+[root@ip-172-31-41-30 cookbooks]# ls
+apachebook  tree
+[root@ip-172-31-41-30 cookbooks]# cd ..
+[root@ip-172-31-41-30 ec2-user]# /home
+bash: /home: Is a directory
+[root@ip-172-31-41-30 ec2-user]# pwd
+/home/ec2-user
+[root@ip-172-31-41-30 ec2-user]# cd ..
+[root@ip-172-31-41-30 home]# ls
+ec2-user  myfile  mygaurav
+[root@ip-172-31-41-30 home]# ls -l
+total 4
+drwx------. 5 ec2-user ec2-user 151 Sep 22 12:44 ec2-user
+-rw-r--r--. 1 root     root      15 Sep 22 12:53 myfile
+drwxrwxrwx. 2 ec2-user root       6 Sep 22 12:53 mygaurav
+[root@ip-172-31-41-30 home]#
