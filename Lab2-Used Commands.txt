@@ -1,0 +1,67 @@
+ 37  cd ec2-user
+   38  ls
+   39  cd cookbooks
+   40  chef shell-init bash
+   41  chef-client -h
+   42  ls
+   43  chef generate recipe createuser
+   44  ls
+   45  tree
+   46  cd apachebook
+   47  chef generate recipe adduser
+   48  tree
+   49  cd ..
+   50  vi apachebook/recipes/adduser.rb
+   51  chef exec ruby -c apachebook/recipes/adduser.rb
+   52  chef-client -zr 'recipe[apachebook::adduser]'
+   53  cd ..
+   54  cd ..
+   55  ls
+   56  ls
+   57  pwd
+   58  cd ..
+   59  ls
+   60  cd home
+   61  ls
+   62  cd ec2-user
+   63  ls
+   64  cd ..
+   65  cd ..
+   66  cat /etc/passwd
+   67  su gaurav
+   68  su amit
+   69  ls
+   70  cd home
+   71  ls
+   72  cd ec2-user
+   73  ls
+   74  cd cookbooks
+   75  ls
+   76  tree
+   77  vi apachebook/recipes/adduser.rb
+   78  cat apachebook/recipes/adduser.rb
+   79  chef exec ruby -c apachebook/recipes/adduser.rb
+   80  history
+   81  chef-client -zr 'recipe[apachebook::adduser]'
+   82  cd ..
+   83  cd ..
+   84  ls
+   85  ls -a
+   86  cd mygaurav
+   87  ls
+   88  cd ..
+   89  ls -l
+   90  cat /etc/passwd
+   91  pwd
+   92  cd ec2-user
+   93  ls
+   94  cd cookbooks
+   95  vi apachebook/recipes/adduser.rb
+   96  chef exec ruby -c apachebook/recipes/adduser.rb
+   97  chef-client -zr 'recipe[apachebook::adduser]'
+   98  cd ..
+   99  cd ..
+  100  ls
+  101  su usga
+  102  su usha
+  103  history
