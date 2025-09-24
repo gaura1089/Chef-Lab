@@ -1,0 +1,149 @@
+[root@ip-172-31-8-96 /]# history
+    1  ohai
+    2  yum install ohai -y
+    3  ohai
+    4  yum update -y
+    5  yum install chef -y
+    6  clear
+    7  wget https://packages.chef.io/files/stable/chef-workstation/0.4.2/el/7/chef-workstation-0.4.2-1.el6.x86_64.rpm
+    8  pwd
+    9  ls
+   10  yum install chef-workstation-0.4.2-1.el6.x86_64.rpm -y
+   11  ohai
+   12  which chef
+   13  chef -v
+   14  yum install libxcrypt-compat -y
+   15  chef -v
+   16  ls
+   17  mkdir mycookbooks
+   18  cd mycookbooks
+   19  chef generate cookbook mybook
+   20  ls
+   21  cd mybook
+   22  ls
+   23  chef generate recipes attri
+   24  pwd
+   25  chef generate recipe myrecipe
+   26  pwd
+   27  ls
+   28  vi recipes/myrecipe.rb
+   29  ched exec ruby -c recipes/myrecipe.rb
+   30  chef exec ruby -c recipes/myrecipe.rb
+   31  vi recipes/myrecipe.rb
+   32  chef exec ruby -c recipes/myrecipe.rb
+   33  cd ..
+   34  chef-client -zr "recipe[mybook::myrecipe]"
+   35  cd ..
+   36  cd mycookbooks
+   37  ls
+   38  chef-client -zr "recipe[mybook::myrecipe]"
+   39  ls
+   40  cd mycookbook
+   41  cd mybook
+   42  chef-client -zr "recipe[mybook::myrecipe]"
+   43  cd ..
+   44  tree
+   45  yum install tree
+   46  tre
+   47  tree
+   48  chef-client -zr "recipe[mybook::myrecipe]"
+   49  ls
+   50  rm -rf *
+   51  ls
+   52  pwd
+   53  chef generate cookbook mybook
+   54  tree
+   55  cd mybook
+   56  chef generate receipe new-reci
+   57  chef generate recipe new-reci
+   58  tree
+   59  clear
+   60  pwd
+   61  cd ..
+   62  rm -rf *
+   63  ls
+   64  clear
+   65  ls
+   66  chef generate cookbook mybook
+   67  cd mybook
+   68  chef generate recipe new-reci
+   69  cd ..
+   70  vi mybook/recipes/new-reci.rb
+   71  chef exec ruby -c mybook/recipes/new-reci.rb
+   72  chef-client -zr "recipe[mybook::new-reci]"
+   73  cd ..
+   74  chef-client -zr "recipe[mybook::new-reci]"
+   75*
+   76  cd mycookbooks
+   77  tree
+   78  chef-client -zr "recipe[mybook::new-reci.rb]"
+   79  chef-client -zr "recipe[mybook::new-reci]"
+   80  chef-client -z -o 'mybook::new-reci'
+   81  pwd
+   82  ls
+   83  tree
+   84  knife cookbook list
+   85  knife cookbook ls
+   86  knife cookbook list
+   87  knife cookbook show
+   88  knife cookbook show mybook
+   89  chef-client -z -o 'mybook::new-reci' --cookbook-path /home/ec2-user/mycookbooks
+   90  cd ..
+   91  chef-client -z -o 'mybook::new-reci' --cookbook-path /home/ec2-user/mycookbooks
+   92  chef validate /home/ec2-user/mycookbooks/mybook
+   93  ls
+   94  rm -rf *
+   95  ls
+   96  pwd
+   97  cd ..
+   98  cd ..
+   99  ls
+  100  cd ~
+  101  ls
+  102  clear
+  103  pwd
+  104  mkdir Cookbooks
+  105  ls
+  106  rm -rf *
+  107  ls
+  108  clear
+  109  mkdir cookbooks
+  110  cd cookbooks
+  111  chef generate cookbook Mycookbook
+  112  cd Mycookbook
+  113  chef generate recipe myrecipe
+  114  cd ..
+  115  vi Mycookbook/recipes/myrecipe.rb
+  116  cd ..
+  117  ls
+  118  cd cookbooks
+  119  chef exec ruby -c Mycookbook/recipes/myrecipe.rb
+  120  chef-client -zr "recipe[Mycookbook::myrecipe]"
+  121  cat /basicinfo
+  122  ls
+  123  cd Mycookbook
+  124  ls
+  125  chef generate recipes newrecipe
+  126  chef generate recipe newrecipe
+  127  tree
+  128  vi recipes/newrecipe.rb
+  129  pwd
+  130  cd ..
+  131  chef-client -zr "recipe[Mycookbook::newrecip]"
+  132  tree
+  133  chef-client -zr "recipe[Mycookbook::newrecipe]"
+  134  cd ..
+  135  cd /
+  136  ls
+  137  cd ~
+  138  ls
+  139  cd cookbooks
+  140  vi Mycookbook/recipes/new-recipe.rb
+  141  tree
+  142  vi Mycookbook/recipes/newrecipe.rb
+  143  chef-client -zr "recipe[Mycookbook::newrecipe]"
+  144  cd ..
+  145  cd /
+  146  ls
+  147  cat newfile
+  148  history

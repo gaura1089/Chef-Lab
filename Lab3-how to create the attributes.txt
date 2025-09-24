@@ -1,0 +1,364 @@
+[root@ip-172-31-8-96 ~]# mkdir cookbooks
+[root@ip-172-31-8-96 ~]# cd cookbooks
+[root@ip-172-31-8-96 cookbooks]# chef generate cookbook Mycookbook
+Generating cookbook Mycookbook
+- Ensuring correct cookbook content
+
+Your cookbook is ready. Type `cd Mycookbook` to enter it.
+
+There are several commands you can run to get started locally developing and testing your cookbook.
+Type `delivery local --help` to see a full list of local testing commands.
+
+Why not start by writing an InSpec test? Tests for the default recipe are stored at:
+
+test/integration/default/default_test.rb
+
+If you'd prefer to dive right in, the default recipe can be found at:
+
+recipes/default.rb
+
+[root@ip-172-31-8-96 cookbooks]# cd Mycookbook
+[root@ip-172-31-8-96 Mycookbook]# chef generate recipe myrecipe
+Recipe: code_generator::recipe
+  * directory[/root/cookbooks/Mycookbook/spec/unit/recipes] action create (up to date)
+  * cookbook_file[/root/cookbooks/Mycookbook/spec/spec_helper.rb] action create_if_missing (up to date)
+  * template[/root/cookbooks/Mycookbook/spec/unit/recipes/myrecipe_spec.rb] action create_if_missing
+    - create new file /root/cookbooks/Mycookbook/spec/unit/recipes/myrecipe_spec.rb
+    - update content in file /root/cookbooks/Mycookbook/spec/unit/recipes/myrecipe_spec.rb from none to 5306f7
+    (diff output suppressed by config)
+    - restore selinux security context
+  * directory[/root/cookbooks/Mycookbook/test/integration/default] action create (up to date)
+  * template[/root/cookbooks/Mycookbook/test/integration/default/myrecipe_test.rb] action create_if_missing
+    - create new file /root/cookbooks/Mycookbook/test/integration/default/myrecipe_test.rb
+    - update content in file /root/cookbooks/Mycookbook/test/integration/default/myrecipe_test.rb from none to 3b7167
+    (diff output suppressed by config)
+    - restore selinux security context
+  * template[/root/cookbooks/Mycookbook/recipes/myrecipe.rb] action create
+    - create new file /root/cookbooks/Mycookbook/recipes/myrecipe.rb
+    - update content in file /root/cookbooks/Mycookbook/recipes/myrecipe.rb from none to a00e04
+    (diff output suppressed by config)
+    - restore selinux security context
+[root@ip-172-31-8-96 Mycookbook]# cd ..
+[root@ip-172-31-8-96 cookbooks]# vi Mycookbook/recipes/myrecipe.rb
+[root@ip-172-31-8-96 cookbooks]# cd ..
+[root@ip-172-31-8-96 ~]# ls
+cookbooks
+[root@ip-172-31-8-96 ~]# cd cookbooks
+[root@ip-172-31-8-96 cookbooks]# chef exec ruby -c Mycookbook/recipes/myrecipe.rb
+Syntax OK
+[root@ip-172-31-8-96 cookbooks]# chef-client -zr "recipe[Mycookbook::myrecipe]"
+[2025-09-24T06:49:55+00:00] WARN: No config file found or specified on command line. Using command line options instead.
+Starting Chef Infra Client, version 15.0.300
+resolving cookbooks for run list: ["Mycookbook::myrecipe"]
+Synchronizing Cookbooks:
+  - Mycookbook (0.1.0)
+Installing Cookbook Gems:
+Compiling Cookbooks...
+Converging 1 resources
+Recipe: Mycookbook::myrecipe
+  * file[/basicinfo] action create
+    - create new file /basicinfo
+    - update content in file /basicinfo from none to b16de8
+    --- /basicinfo      2025-09-24 06:49:56.773616852 +0000
+    +++ /.chef-basicinfo20250924-29075-1b23qdy  2025-09-24 06:49:56.773616852 +0000
+    @@ -1 +1,6 @@
+    +This is to get Attributes
+    + HOSTNAME: ip-172-31-8-96
+    + IPADDRESS: 172.31.8.96
+    + CPU: 2299.998
+    + MEMORY: 972160kB
+    - change owner from '' to 'root'
+    - change group from '' to 'root'
+    - restore selinux security context
+
+Running handlers:
+Running handlers complete
+Chef Infra Client finished, 1/1 resources updated in 01 seconds
+[root@ip-172-31-8-96 cookbooks]# cat /basicinfo
+This is to get Attributes
+ HOSTNAME: ip-172-31-8-96
+ IPADDRESS: 172.31.8.96
+ CPU: 2299.998
+ MEMORY: 972160kB[root@ip-172-31-8-96 cookbooks]#
+[root@ip-172-31-8-96 cookbooks]#
+[root@ip-172-31-8-96 cookbooks]# ls
+Mycookbook
+[root@ip-172-31-8-96 cookbooks]# cd Mycookbook
+[root@ip-172-31-8-96 Mycookbook]# ls
+CHANGELOG.md  LICENSE  Policyfile.rb  README.md  chefignore  kitchen.yml  metadata.rb  recipes  spec  test
+[root@ip-172-31-8-96 Mycookbook]# chef generate recipes newrecipe
+Usage: chef generate GENERATOR [options]
+
+Available generators:
+  cookbook        Generate a single cookbook
+  recipe          Generate a new recipe
+  attribute       Generate an attributes file
+  template        Generate a file template
+  file            Generate a cookbook file
+  helpers         Generate a cookbook helper file in libraries
+  resource        Generate a custom resource
+  repo            Generate a Chef code repository
+  policyfile      Generate a Policyfile for use with the install/push commands
+  generator       Copy ChefDK's generator cookbook so you can customize it
+  build-cookbook  Generate a build cookbook for use with Chef Workflow (Delivery)
+
+[root@ip-172-31-8-96 Mycookbook]# chef generate recipe newrecipe
+Recipe: code_generator::recipe
+  * directory[/root/cookbooks/Mycookbook/spec/unit/recipes] action create (up to date)
+  * cookbook_file[/root/cookbooks/Mycookbook/spec/spec_helper.rb] action create_if_missing (up to date)
+  * template[/root/cookbooks/Mycookbook/spec/unit/recipes/newrecipe_spec.rb] action create_if_missing
+    - create new file /root/cookbooks/Mycookbook/spec/unit/recipes/newrecipe_spec.rb
+    - update content in file /root/cookbooks/Mycookbook/spec/unit/recipes/newrecipe_spec.rb from none to 5d41a1
+    (diff output suppressed by config)
+    - restore selinux security context
+  * directory[/root/cookbooks/Mycookbook/test/integration/default] action create (up to date)
+  * template[/root/cookbooks/Mycookbook/test/integration/default/newrecipe_test.rb] action create_if_missing
+    - create new file /root/cookbooks/Mycookbook/test/integration/default/newrecipe_test.rb
+    - update content in file /root/cookbooks/Mycookbook/test/integration/default/newrecipe_test.rb from none to 3fcd97
+    (diff output suppressed by config)
+    - restore selinux security context
+  * template[/root/cookbooks/Mycookbook/recipes/newrecipe.rb] action create
+    - create new file /root/cookbooks/Mycookbook/recipes/newrecipe.rb
+    - update content in file /root/cookbooks/Mycookbook/recipes/newrecipe.rb from none to c0e151
+    (diff output suppressed by config)
+    - restore selinux security context
+[root@ip-172-31-8-96 Mycookbook]# tree
+.
+├── CHANGELOG.md
+├── LICENSE
+├── Policyfile.rb
+├── README.md
+├── chefignore
+├── kitchen.yml
+├── metadata.rb
+├── recipes
+│   ├── default.rb
+│   ├── myrecipe.rb
+│   └── newrecipe.rb
+├── spec
+│   ├── spec_helper.rb
+│   └── unit
+│       └── recipes
+│           ├── default_spec.rb
+│           ├── myrecipe_spec.rb
+│           └── newrecipe_spec.rb
+└── test
+    └── integration
+        └── default
+            ├── default_test.rb
+            ├── myrecipe_test.rb
+            └── newrecipe_test.rb
+
+7 directories, 17 files
+[root@ip-172-31-8-96 Mycookbook]# vi recipes/newrecipe.rb
+[root@ip-172-31-8-96 Mycookbook]# pwd
+/root/cookbooks/Mycookbook
+[root@ip-172-31-8-96 Mycookbook]# cd ..
+[root@ip-172-31-8-96 cookbooks]# chef-client -zr "recipe[Mycookbook::newrecip]"
+[2025-09-24T07:05:59+00:00] WARN: No config file found or specified on command line. Using command line options instead.
+Starting Chef Infra Client, version 15.0.300
+resolving cookbooks for run list: ["Mycookbook::newrecip"]
+Synchronizing Cookbooks:
+  - Mycookbook (0.1.0)
+Installing Cookbook Gems:
+Compiling Cookbooks...
+
+================================================================================
+Recipe Compile Error
+================================================================================
+
+Chef::Exceptions::RecipeNotFound
+--------------------------------
+could not find recipe newrecip for cookbook Mycookbook
+
+System Info:
+------------
+chef_version=15.0.300
+platform=amazon
+platform_version=2023
+ruby=ruby 2.6.3p62 (2019-04-16 revision 67580) [x86_64-linux]
+program_name=/usr/bin/chef-client
+executable=/opt/chef-workstation/bin/chef-client
+
+
+Running handlers:
+[2025-09-24T07:06:01+00:00] ERROR: Running exception handlers
+Running handlers complete
+[2025-09-24T07:06:01+00:00] ERROR: Exception handlers complete
+Chef Infra Client failed. 0 resources updated in 01 seconds
+[2025-09-24T07:06:01+00:00] FATAL: Stacktrace dumped to /root/.chef/local-mode-cache/cache/chef-stacktrace.out
+[2025-09-24T07:06:01+00:00] FATAL: Please provide the contents of the stacktrace.out file if you file a bug report
+[2025-09-24T07:06:01+00:00] FATAL: Chef::Exceptions::RecipeNotFound: could not find recipe newrecip for cookbook Mycookbook
+[root@ip-172-31-8-96 cookbooks]# tree
+.
+└── Mycookbook
+    ├── CHANGELOG.md
+    ├── LICENSE
+    ├── Policyfile.rb
+    ├── README.md
+    ├── chefignore
+    ├── kitchen.yml
+    ├── metadata.rb
+    ├── recipes
+    │   ├── default.rb
+    │   ├── myrecipe.rb
+    │   └── newrecipe.rb
+    ├── spec
+    │   ├── spec_helper.rb
+    │   └── unit
+    │       └── recipes
+    │           ├── default_spec.rb
+    │           ├── myrecipe_spec.rb
+    │           └── newrecipe_spec.rb
+    └── test
+        └── integration
+            └── default
+                ├── default_test.rb
+                ├── myrecipe_test.rb
+                └── newrecipe_test.rb
+
+8 directories, 17 files
+[root@ip-172-31-8-96 cookbooks]# chef-client -zr "recipe[Mycookbook::newrecipe]"
+[2025-09-24T07:07:09+00:00] WARN: No config file found or specified on command line. Using command line options instead.
+Starting Chef Infra Client, version 15.0.300
+resolving cookbooks for run list: ["Mycookbook::newrecipe"]
+Synchronizing Cookbooks:
+  - Mycookbook (0.1.0)
+Installing Cookbook Gems:
+Compiling Cookbooks...
+
+================================================================================
+Recipe Compile Error in /root/.chef/local-mode-cache/cache/cookbooks/Mycookbook/recipes/newrecipe.rb
+================================================================================
+
+NoMethodError
+-------------
+undefined method `[]' for nil:NilClass
+
+Cookbook Trace:
+---------------
+  /root/.chef/local-mode-cache/cache/cookbooks/Mycookbook/recipes/newrecipe.rb:20:in `block in from_file'
+  /root/.chef/local-mode-cache/cache/cookbooks/Mycookbook/recipes/newrecipe.rb:14:in `from_file'
+
+Relevant File Content:
+----------------------
+/root/.chef/local-mode-cache/cache/cookbooks/Mycookbook/recipes/newrecipe.rb:
+
+ 13:
+ 14:  file '/newfile' do
+ 15:    content <<-EOF
+ 16:  this is new one
+ 17:
+ 18:  HOSTNAME: #{node['hostname']}
+ 19:  OSNAME: #{node['platform']} #{node['platform_version']}
+ 20>> SYSTEMMODEL: #{node['dmi']['system']['product_name']}
+ 21:  CPU: #{node['cpu']['0']['model_name']}
+ 22:  IPADDRESS: #{node['ipaddress']}
+ 23:    EOF
+ 24:
+ 25:    owner 'root'
+ 26:    group 'ec2-user'
+ 27:    mode '0644'
+ 28:    action :create
+ 29:  end
+
+System Info:
+------------
+chef_version=15.0.300
+platform=amazon
+platform_version=2023
+ruby=ruby 2.6.3p62 (2019-04-16 revision 67580) [x86_64-linux]
+program_name=/usr/bin/chef-client
+executable=/opt/chef-workstation/bin/chef-client
+
+
+Running handlers:
+[2025-09-24T07:07:11+00:00] ERROR: Running exception handlers
+Running handlers complete
+[2025-09-24T07:07:11+00:00] ERROR: Exception handlers complete
+Chef Infra Client failed. 0 resources updated in 01 seconds
+[2025-09-24T07:07:11+00:00] FATAL: Stacktrace dumped to /root/.chef/local-mode-cache/cache/chef-stacktrace.out
+[2025-09-24T07:07:11+00:00] FATAL: Please provide the contents of the stacktrace.out file if you file a bug report
+[2025-09-24T07:07:11+00:00] FATAL: NoMethodError: undefined method `[]' for nil:NilClass
+[root@ip-172-31-8-96 cookbooks]# cd ..
+[root@ip-172-31-8-96 ~]# cd /
+[root@ip-172-31-8-96 /]# ls
+basicinfo  bin  boot  dev  etc  home  lib  lib64  local  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+[root@ip-172-31-8-96 /]# cd ~
+[root@ip-172-31-8-96 ~]# ls
+cookbooks  nodes
+[root@ip-172-31-8-96 ~]# cd cookbooks
+[root@ip-172-31-8-96 cookbooks]# vi Mycookbook/recipes/new-recipe.rb
+[root@ip-172-31-8-96 cookbooks]# tree
+.
+└── Mycookbook
+    ├── CHANGELOG.md
+    ├── LICENSE
+    ├── Policyfile.rb
+    ├── README.md
+    ├── chefignore
+    ├── kitchen.yml
+    ├── metadata.rb
+    ├── recipes
+    │   ├── default.rb
+    │   ├── myrecipe.rb
+    │   ├── new-recipe.rb
+    │   └── newrecipe.rb
+    ├── spec
+    │   ├── spec_helper.rb
+    │   └── unit
+    │       └── recipes
+    │           ├── default_spec.rb
+    │           ├── myrecipe_spec.rb
+    │           └── newrecipe_spec.rb
+    └── test
+        └── integration
+            └── default
+                ├── default_test.rb
+                ├── myrecipe_test.rb
+                └── newrecipe_test.rb
+
+8 directories, 18 files
+[root@ip-172-31-8-96 cookbooks]# vi Mycookbook/recipes/newrecipe.rb
+[root@ip-172-31-8-96 cookbooks]# chef-client -zr "recipe[Mycookbook::newrecipe]"
+[2025-09-24T07:10:44+00:00] WARN: No config file found or specified on command line. Using command line options instead.
+Starting Chef Infra Client, version 15.0.300
+resolving cookbooks for run list: ["Mycookbook::newrecipe"]
+Synchronizing Cookbooks:
+  - Mycookbook (0.1.0)
+Installing Cookbook Gems:
+Compiling Cookbooks...
+Converging 1 resources
+Recipe: Mycookbook::newrecipe
+  * file[/newfile] action create
+    - create new file /newfile
+    - update content in file /newfile from none to 4d562d
+    --- /newfile        2025-09-24 07:10:46.347814966 +0000
+    +++ /.chef-newfile20250924-30021-1pbrh9j    2025-09-24 07:10:46.347814966 +0000
+    @@ -1 +1,7 @@
+    +this is new one
+    +
+    +HOSTNAME: ip-172-31-8-96
+    +OSNAME: amazon 2023
+    +CPU: Intel(R) Xeon(R) CPU E5-2686 v4 @ 2.30GHz
+    +IPADDRESS: 172.31.8.96
+    - change mode from '' to '0644'
+    - change owner from '' to 'root'
+    - change group from '' to 'ec2-user'
+    - restore selinux security context
+
+Running handlers:
+Running handlers complete
+Chef Infra Client finished, 1/1 resources updated in 01 seconds
+[root@ip-172-31-8-96 cookbooks]# cd ..
+[root@ip-172-31-8-96 ~]# cd /
+[root@ip-172-31-8-96 /]# ls
+basicinfo  bin  boot  dev  etc  home  lib  lib64  local  media  mnt  newfile  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+[root@ip-172-31-8-96 /]# cat newfile
+this is new one
+
+HOSTNAME: ip-172-31-8-96
+OSNAME: amazon 2023
+CPU: Intel(R) Xeon(R) CPU E5-2686 v4 @ 2.30GHz
+IPADDRESS: 172.31.8.96
+[root@ip-172-31-8-96 /]#
