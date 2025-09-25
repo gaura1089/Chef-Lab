@@ -1,0 +1,341 @@
+sh-5.1# pwd
+/opt/soft
+sh-5.1# cd ../..
+sh-5.1# pwd
+/
+sh-5.1# pwd
+/
+sh-5.1# cd /
+sh-5.1# ls
+afs cookbooks    etcid_dsa.pubid_rsa    mnt       root sshd.sh trans_repo.sh
+app daemon.json  extra.shid_ecdsaid_rsa.pub  multi.sh  run sys trans_repo_bak.sh
+bin dev      fileinfoid_ecdsa.publib    nodes     sbin tmp trans_repo_nexus.sh
+chef-workstation-0.4.2-1.el6.x86_64.rpm  dkrun.sh     homeid_ed25519lib64    opt       server.sh  trans.sh usr
+config.json docker.sh    id_dsaid_ed25519.pubmedia    proc      srv trans_maven.sh  var
+sh-5.1# cd cookbooks
+sh-5.1# ls
+mycookbook
+sh-5.1# cd mycookbook
+sh-5.1# ls
+CHANGELOG.md  LICENSE  Policyfile.rb  README.md  chefignore  kitchen.yml  metadata.rb  recipesspec  test
+sh-5.1# cd recipes
+sh-5.1# ls
+default.rb  myrecipe.rb
+sh-5.1# cd ..
+sh-5.1# pwd
+/cookbooks/mycookbook
+sh-5.1# cd ..
+sh-5.1# ls
+mycookbook
+sh-5.1# pwd
+/cookbooks
+sh-5.1# cd mycookbook        
+sh-5.1# chef generate recipe linx-comm 
+[2025-09-25T09:22:25+08:00] WARN: Please install an English UTF-8 locale for Chef to use, falling back to C locale and disabling UTF-8 support.
+Recipe: code_generator::recipe
+  * directory[/cookbooks/mycookbook/spec/unit/recipes] action create (up to date)
+  * cookbook_file[/cookbooks/mycookbook/spec/spec_helper.rb] action create_if_missing (up to date)
+  * template[/cookbooks/mycookbook/spec/unit/recipes/linx-comm_spec.rb] action create_if_missing
+    - create new file /cookbooks/mycookbook/spec/unit/recipes/linx-comm_spec.rb
+    - update content in file /cookbooks/mycookbook/spec/unit/recipes/linx-comm_spec.rb from none to 5f94aa
+    (diff output suppressed by config)
+  * directory[/cookbooks/mycookbook/test/integration/default] action create (up to date)
+  * template[/cookbooks/mycookbook/test/integration/default/linx-comm_test.rb] action create_if_missing
+    - create new file /cookbooks/mycookbook/test/integration/default/linx-comm_test.rb
+    - update content in file /cookbooks/mycookbook/test/integration/default/linx-comm_test.rb from none to 24a624
+    (diff output suppressed by config)
+  * template[/cookbooks/mycookbook/recipes/linx-comm.rb] action create
+    - create new file /cookbooks/mycookbook/recipes/linx-comm.rb
+    - update content in file /cookbooks/mycookbook/recipes/linx-comm.rb from none to 896e3a
+    (diff output suppressed by config)
+sh-5.1# tree
+.
+|-- CHANGELOG.md
+|-- LICENSE
+|-- Policyfile.rb
+|-- README.md
+|-- chefignore
+|-- kitchen.yml
+|-- metadata.rb
+|-- recipes
+|   |-- default.rb
+|   |-- linx-comm.rb
+|   `-- myrecipe.rb
+|-- spec
+|   |-- spec_helper.rb
+|   `-- unit
+|       `-- recipes
+|           |-- default_spec.rb
+|           |-- linx-comm_spec.rb
+|           `-- myrecipe_spec.rb
+`-- test
+    `-- integration
+        `-- default
+            |-- default_test.rb
+            |-- linx-comm_test.rb
+            `-- myrecipe_test.rb
+
+7 directories, 17 files
+sh-5.1# pwd
+/cookbooks/mycookbook
+sh-5.1# vi recipes/linx-comm.rb
+sh-5.1# pwd
+/cookbooks/mycookbook
+sh-5.1# cat recipes/linx-comm.rb
+#
+# Cookbook:: mycookbook
+# Recipe:: linx-comm
+#
+# Copyright:: 2025, The Authors, All Rights Reserved.
+#
+
+
+
+
+execute 'run linux commands' do
+  command <<-EOH 
+  mkdir /gaurav
+  touch /myfile
+  EOH
+  action :run
+end
+
+
+sh-5.1# 
+sh-5.1# chef exec ruby -c recipes/linx-comm.rb
+[2025-09-25T09:28:13+08:00] WARN: Please install an English UTF-8 locale for Chef to use, falling back to C locale and disabling UTF-8 support.
+Syntax OK
+sh-5.1# pwd                     
+/cookbooks/mycookbook
+sh-5.1# cd ..
+sh-5.1# chef-client -zr "recipe[mycookbook::linx-comm]"
+[2025-09-25T09:29:21+08:00] WARN: Please install an English UTF-8 locale for Chef to use, falling back to C locale and disabling UTF-8 support.
+[2025-09-25T09:29:23+08:00] WARN: No config file found or specified on command line. Using command line options instead.
+Starting Chef Infra Client, version 15.0.300
+[2025-09-25T09:29:24+08:00] WARN: Plugin Network: unable to detect ipaddress
+resolving cookbooks for run list: ["mycookbook::linx-comm"]
+Synchronizing Cookbooks:
+  - mycookbook (0.1.0)
+Installing Cookbook Gems:
+Compiling Cookbooks...
+Converging 1 resources
+Recipe: mycookbook::linx-comm
+  * execute[run linux commands] action run
+    - execute   mkdir /gaurav
+      touch /myfile
+  
+
+Running handlers:
+Running handlers complete
+Chef Infra Client finished, 1/1 resources updated in 01 seconds
+sh-5.1# cd ../..
+sh-5.1# pwd
+/
+sh-5.1# ls
+afs cookbooks    etcid_dsa      id_ed25519.pub  mediaopt   server.sh  trans.sh      usr
+app daemon.json  extra.shid_dsa.pub    id_rsa      mntproc  srv trans_maven.sh       var
+bin dev      fileinfoid_ecdsa      id_rsa.pub      multi.shroot  sshd.sh trans_repo.sh
+chef-workstation-0.4.2-1.el6.x86_64.rpm  dkrun.sh     gauravid_ecdsa.pub  lib      myfilerun   sys trans_repo_bak.sh
+config.json docker.sh    homeid_ed25519    lib64      nodessbin  tmp trans_repo_nexus.sh
+sh-5.1# pwd
+/
+sh-5.1# cd cookbooks
+sh-5.1# ls
+mycookbook
+sh-5.1# cd mycookbook
+sh-5.1# chef generate recipe add-user
+[2025-09-25T09:31:12+08:00] WARN: Please install an English UTF-8 locale for Chef to use, falling back to C locale and disabling UTF-8 support.
+Recipe: code_generator::recipe
+  * directory[/cookbooks/mycookbook/spec/unit/recipes] action create (up to date)
+  * cookbook_file[/cookbooks/mycookbook/spec/spec_helper.rb] action create_if_missing (up to date)
+  * template[/cookbooks/mycookbook/spec/unit/recipes/add-user_spec.rb] action create_if_missing
+    - create new file /cookbooks/mycookbook/spec/unit/recipes/add-user_spec.rb
+    - update content in file /cookbooks/mycookbook/spec/unit/recipes/add-user_spec.rb from none to 460c3d
+    (diff output suppressed by config)
+  * directory[/cookbooks/mycookbook/test/integration/default] action create (up to date)
+  * template[/cookbooks/mycookbook/test/integration/default/add-user_test.rb] action create_if_missing
+    - create new file /cookbooks/mycookbook/test/integration/default/add-user_test.rb
+    - update content in file /cookbooks/mycookbook/test/integration/default/add-user_test.rb from none to 3b9724
+    (diff output suppressed by config)
+  * template[/cookbooks/mycookbook/recipes/add-user.rb] action create
+    - create new file /cookbooks/mycookbook/recipes/add-user.rb
+    - update content in file /cookbooks/mycookbook/recipes/add-user.rb from none to 5948c9
+    (diff output suppressed by config)
+sh-5.1# cd ..
+sh-5.1# pwd
+/cookbooks
+sh-5.1# vi mycookbook/recipes/add-user.rb
+sh-5.1# cat ^C
+sh-5.1# cat mycookbook/recipes/add-user.rb
+#
+# Cookbook:: mycookbook
+# Recipe:: add-user
+#
+# Copyright:: 2025, The Authors, All Rights Reserved.
+#
+#
+
+
+
+user 'dj' do
+  action :create
+  password '$2y$10$0VAxdzvAYuFtaDC15qUG8u4ALD4WRFkTzK2H67spaCKYyu7MP6bTS'
+end
+
+sh-5.1# chek exec ruby -c mycookbook/recipes/add-user.rb
+sh: chek: command not found
+sh-5.1# pwd
+/cookbooks
+sh-5.1# chef exec ruby -c mycookbook/recipes/add-user.rb
+[2025-09-25T09:40:04+08:00] WARN: Please install an English UTF-8 locale for Chef to use, falling back to C locale and disabling UTF-8 support.
+Syntax OK
+sh-5.1# chef-client -zr "recipe[mycookbook::add-user]"
+[2025-09-25T09:40:29+08:00] WARN: Please install an English UTF-8 locale for Chef to use, falling back to C locale and disabling UTF-8 support.
+[2025-09-25T09:40:31+08:00] WARN: No config file found or specified on command line. Using command line options instead.
+Starting Chef Infra Client, version 15.0.300
+[2025-09-25T09:40:32+08:00] WARN: Plugin Network: unable to detect ipaddress
+resolving cookbooks for run list: ["mycookbook::add-user"]
+Synchronizing Cookbooks:
+  - mycookbook (0.1.0)
+Installing Cookbook Gems:
+Compiling Cookbooks...
+Converging 1 resources
+Recipe: mycookbook::add-user
+  * linux_user[dj] action create
+    - create user dj
+
+Running handlers:
+Running handlers complete
+Chef Infra Client finished, 1/1 resources updated in 01 seconds
+sh-5.1# pwd  
+/cookbooks
+sh-5.1# cd ..
+sh-5.1# pwd
+/
+sh-5.1# cd home
+sh-5.1# ls
+amit  gaurav
+sh-5.1# su dj
+bash-5.1$ whoami
+dj
+bash-5.1$ exit
+exit
+sh-5.1# pwd
+/home
+sh-5.1# cd ..
+sh-5.1# cd cookbook
+sh: cd: cookbook: No such file or directory
+sh-5.1# cd cookbooks
+sh-5.1# ls
+mycookbook
+sh-5.1# tree                          
+.
+`-- mycookbook
+    |-- CHANGELOG.md
+    |-- LICENSE
+    |-- Policyfile.rb
+    |-- README.md
+    |-- chefignore
+    |-- kitchen.yml
+    |-- metadata.rb
+    |-- recipes
+    |   |-- add-user.rb
+    |   |-- default.rb
+    |   |-- linx-comm.rb
+    |   `-- myrecipe.rb
+    |-- spec
+    |   |-- spec_helper.rb
+    |   `-- unit
+    |       `-- recipes
+    |           |-- add-user_spec.rb
+    |           |-- default_spec.rb
+    |           |-- linx-comm_spec.rb
+    |           `-- myrecipe_spec.rb
+    `-- test
+        `-- integration
+            `-- default
+                |-- add-user_test.rb
+                |-- default_test.rb
+                |-- linx-comm_test.rb
+                `-- myrecipe_test.rb
+
+8 directories, 20 files
+sh-5.1# pwd
+/cookbooks
+sh-5.1# vi mycookbook/recipes/add-user.rb
+sh-5.1# cat  mycookbook/recipes/add-user.rb           
+#
+# Cookbook:: mycookbook
+# Recipe:: add-user
+#
+# Copyright:: 2025, The Authors, All Rights Reserved.
+#
+#
+
+
+
+user 'dj' do
+  action :create
+  password '$2y$10$0VAxdzvAYuFtaDC15qUG8u4ALD4WRFkTzK2H67spaCKYyu7MP6bTS'
+  manage_home true 
+end
+
+sh-5.1# chef exec ruby -c mycookbook/recipes/add-user.rb
+[2025-09-25T09:43:42+08:00] WARN: Please install an English UTF-8 locale for Chef to use, falling back to C locale and disabling UTF-8 support.
+Syntax OK
+sh-5.1# chef-client -zr "recipe[mycookbook::add-user]"
+[2025-09-25T09:43:52+08:00] WARN: Please install an English UTF-8 locale for Chef to use, falling back to C locale and disabling UTF-8 support.
+[2025-09-25T09:43:54+08:00] WARN: No config file found or specified on command line. Using command line options instead.
+Starting Chef Infra Client, version 15.0.300
+[2025-09-25T09:43:55+08:00] WARN: Plugin Network: unable to detect ipaddress
+resolving cookbooks for run list: ["mycookbook::add-user"]
+Synchronizing Cookbooks:
+  - mycookbook (0.1.0)
+Installing Cookbook Gems:
+Compiling Cookbooks...
+Converging 1 resources
+Recipe: mycookbook::add-user
+  * linux_user[dj] action create (up to date)
+
+Running handlers:
+Running handlers complete
+Chef Infra Client finished, 0/1 resources updated in 01 seconds
+sh-5.1# cd ..
+sh-5.1# pwd
+/
+sh-5.1# cd home
+sh-5.1# ls
+amit  gaurav
+sh-5.1# pwd
+/home
+sh-5.1# cd ..
+sh-5.1# cd cookbooks
+sh-5.1# ls
+mycookbook
+sh-5.1# vi mycookbook/recipes/add-user.rb
+sh-5.1# chef exec ruby -c mycookbook/recipes/add-user.rb
+[2025-09-25T09:47:11+08:00] WARN: Please install an English UTF-8 locale for Chef to use, falling back to C locale and disabling UTF-8 support.
+Syntax OK
+sh-5.1# chef-client -zr "recipe[mycookbook::add-user]"
+[2025-09-25T09:47:18+08:00] WARN: Please install an English UTF-8 locale for Chef to use, falling back to C locale and disabling UTF-8 support.
+[2025-09-25T09:47:19+08:00] WARN: No config file found or specified on command line. Using command line options instead.
+Starting Chef Infra Client, version 15.0.300
+[2025-09-25T09:47:20+08:00] WARN: Plugin Network: unable to detect ipaddress
+resolving cookbooks for run list: ["mycookbook::add-user"]
+Synchronizing Cookbooks:
+  - mycookbook (0.1.0)
+Installing Cookbook Gems:
+Compiling Cookbooks...
+Converging 1 resources
+Recipe: mycookbook::add-user
+  * linux_user[dj1] action create
+    - create user dj1
+
+Running handlers:
+Running handlers complete
+Chef Infra Client finished, 1/1 resources updated in 01 seconds
+sh-5.1# cd ..
+sh-5.1# cd home
+sh-5.1# ls
+amit  dj1  gaurav
+sh-5.1# 
