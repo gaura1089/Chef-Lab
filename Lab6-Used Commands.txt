@@ -1,0 +1,30 @@
+  201  chef generate cookbook mybook
+  202  cd mycook
+  203  chef generate recipe apache
+  204  cd mybook
+  205  chef generate recipe apache
+  206  vi recipes/apache.rb
+  207  tree
+  208*
+  209  vi recipes/docker.rb
+  210  chef exec ruby -c recipes/docker.rb
+  211  chef exec ruby -c recipes/apache.rb
+  212  vi recipes/default.rb
+  213  tree
+  214  cat default.rb
+  215  cat recipes/default.rb
+  216  cd ..
+  217  ls
+  218  cd mubook
+  219  vi recipes/user.rb
+  220  vi recipes/grp.rb
+  221  vi recipes/fol.rb
+  222  vi recipes/default.rb
+  223  cat recipes/default.rb
+  224  cd ..
+  225  chef exec ruby -c "recipe[mubook::default]"
+  226  tree
+  227  chef exec ruby -c "recipe[mubook::user]"
+  228  ls
+  229  chef-client -zr "recipe[mubook::default],recipe[mybook::default]"
+  230  history

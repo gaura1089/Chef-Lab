@@ -1,0 +1,33 @@
+ cd cookbooks
+  166  ls
+  167  mv Mybook mubook
+  168  ls
+  169  cd mubook
+  170  ls
+  171  tree
+  172  vi recipes/fol.rb
+  173  vi recipes/user.rb
+  174  vi recipes/grp.rb
+  175  cd ..
+  176  chef-client -zr "recipe[mubook::user],recipe[mubook::grp],recipe[mubook::fol]"
+  177  cd ..
+  178  ls
+  179  clear
+  180  ls
+  181  cd cookbooks
+  182  tree
+  183  vi mubook/recipes/fol.rb
+  184  cat mubook/recipes/fol.rb
+  185  vi mubook/recipes/user.rb
+  186  cat mubook/recipes/user.rb
+  187*
+  188  cat mubook/recipes/grp.rb
+  189  chef exec ruby -c mubook/recipes/user.rb
+  190  chef exec ruby -c mubook/recipes/grp.rb
+  191  chef exec ruby -c mubook/recipes/fol.rb
+  192  chef-client -zr "recipe[mubook::user],recipe[mubook::grp],recipe[mubook::fol]"
+  193  cd ..
+  194  ls
+  195  cat /etc/group
+  196  cat /etc/passwd
+  197  history

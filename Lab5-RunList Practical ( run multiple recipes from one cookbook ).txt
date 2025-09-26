@@ -1,0 +1,249 @@
+root@ip-172-31-9-122:/# ls
+bin                boot       dev  home  lib.usr-is-merged  lost+found  mnt    myfol1  opt   root  sbin                snap  sys  usr
+bin.usr-is-merged  cookbooks  etc  lib   lib64              media       myfol  nodes   proc  run   sbin.usr-is-merged  srv   tmp  var
+root@ip-172-31-9-122:/# cd cookbooks
+root@ip-172-31-9-122:/cookbooks# tree
+.
+├── mubook
+│   ├── CHANGELOG.md
+│   ├── LICENSE
+│   ├── Policyfile.rb
+│   ├── README.md
+│   ├── chefignore
+│   ├── compliance
+│   │   ├── README.md
+│   │   ├── inputs
+│   │   ├── profiles
+│   │   └── waivers
+│   ├── kitchen.yml
+│   ├── metadata.rb
+│   ├── recipes
+│   │   ├── default.rb
+│   │   ├── fol.rb
+│   │   ├── grp.rb
+│   │   └── user.rb
+│   ├── spec
+│   │   ├── spec_helper.rb
+│   │   └── unit
+│   │       └── recipes
+│   │           ├── fol_spec.rb
+│   │           ├── grp_spec.rb
+│   │           └── user_spec.rb
+│   └── test
+│       └── integration
+│           └── default
+│               ├── default_test.rb
+│               ├── fol_test.rb
+│               ├── grp_test.rb
+│               └── user_test.rb
+└── nodes
+    └── ip-172-31-9-122.ap-south-1.compute.internal.json
+
+14 directories, 21 files
+root@ip-172-31-9-122:/cookbooks# vi mubook/recipes/fol.rb
+root@ip-172-31-9-122:/cookbooks# cat mubook/recipes/fol.rb
+#
+# Cookbook:: Mybook
+# Recipe:: fol
+#
+# Copyright:: 2025, The Authors, All Rights Reserved.
+#
+#
+#
+#
+#
+
+
+
+
+
+directory '/myfol2' do
+  owner 'ubuntu'
+  group 'gaurav'
+  action :create
+end
+root@ip-172-31-9-122:/cookbooks# vi mubook/recipes/user.rb
+root@ip-172-31-9-122:/cookbooks# cat mubook/recipes/user.rb
+#
+# Cookbook:: Mybook
+# Recipe:: user
+#
+# Copyright:: 2025, The Authors, All Rights Reserved.
+#
+
+
+
+
+user 'rohit' do
+  manage_home true
+  password '$2y$10$Ckpb/wJov3.8qAGpNUsgduX59.OD14uSGois8QR4yDLLAotGZCavK'
+  action :create
+end
+
+root@ip-172-31-9-122:/cookbooks# vi mubook/recipes/grp.rb
+root@ip-172-31-9-122:/cookbooks# cat mubook/recipes/grp.rb
+#
+#
+# Cookbook:: Mybook
+# Recipe:: grp
+#
+# Copyright:: 2025, The Authors, All Rights Reserved.
+
+
+
+
+
+
+group 'vpn_group2' do
+  members ['gaurav','ubuntu']
+  append true
+end
+
+root@ip-172-31-9-122:/cookbooks# chef exec ruby -c mubook/recipes/user.rb
+Syntax OK
+root@ip-172-31-9-122:/cookbooks# chef exec ruby -c mubook/recipes/grp.rb
+Syntax OK
+root@ip-172-31-9-122:/cookbooks# chef exec ruby -c mubook/recipes/fol.rb
+Syntax OK
+root@ip-172-31-9-122:/cookbooks# chef-client -zr "recipe[mubook::user],recipe[mubook::grp],recipe[mubook::fol]"
+[2025-09-26T12:58:15+00:00] WARN: No config file found or specified on command line. Using command line options instead.
+Chef Infra Client, version 18.7.10
+Patents: https://www.chef.io/patents
+Infra Phase starting
+Resolving cookbooks for run list: ["mubook::user", "mubook::grp", "mubook::fol"]
+Synchronizing cookbooks:
+  - Mybook (0.1.0)
+Installing cookbook gem dependencies:
+Compiling cookbooks...
+Loading Chef InSpec profile files:
+Loading Chef InSpec input files:
+Loading Chef InSpec waiver files:
+Converging 3 resources
+Recipe: Mybook::user
+  * linux_user[rohit] action create
+    - create user rohit
+Recipe: Mybook::grp
+  * group[vpn_group2] action create
+    - create group vpn_group2
+Recipe: Mybook::fol
+  * directory[/myfol2] action create
+    - create new directory /myfol2
+    - change owner from '' to 'ubuntu'
+    - change group from '' to 'gaurav'
+
+Running handlers:
+Running handlers complete
+Infra Phase complete, 3/3 resources updated in 01 seconds
+root@ip-172-31-9-122:/cookbooks# cd ..
+root@ip-172-31-9-122:/# ls
+bin                boot       dev  home  lib.usr-is-merged  lost+found  mnt    myfol1  nodes  proc  run   sbin.usr-is-merged  srv  tmp  var
+bin.usr-is-merged  cookbooks  etc  lib   lib64              media       myfol  myfol2  opt    root  sbin  snap                sys  usr
+root@ip-172-31-9-122:/# cat /etc/group
+root:x:0:
+daemon:x:1:
+bin:x:2:
+sys:x:3:
+adm:x:4:syslog,ubuntu
+tty:x:5:
+disk:x:6:
+lp:x:7:
+mail:x:8:
+news:x:9:
+uucp:x:10:
+man:x:12:
+proxy:x:13:
+kmem:x:15:
+dialout:x:20:
+fax:x:21:
+voice:x:22:
+cdrom:x:24:ubuntu
+floppy:x:25:
+tape:x:26:
+sudo:x:27:ubuntu
+audio:x:29:
+dip:x:30:ubuntu
+www-data:x:33:
+backup:x:34:
+operator:x:37:
+list:x:38:
+irc:x:39:
+src:x:40:
+shadow:x:42:
+utmp:x:43:
+video:x:44:
+sasl:x:45:
+plugdev:x:46:
+staff:x:50:
+games:x:60:
+users:x:100:
+nogroup:x:65534:
+systemd-journal:x:999:
+systemd-network:x:998:
+crontab:x:997:
+systemd-timesync:x:996:
+input:x:995:
+sgx:x:994:
+kvm:x:993:
+render:x:992:
+messagebus:x:101:
+syslog:x:102:
+systemd-resolve:x:991:
+uuidd:x:103:
+tss:x:104:
+lxd:x:105:ubuntu
+_ssh:x:106:
+rdma:x:107:
+tcpdump:x:108:
+landscape:x:109:
+fwupd-refresh:x:990:
+polkitd:x:989:
+admin:x:110:
+netdev:x:111:
+_chrony:x:112:
+ubuntu:x:1000:
+gaurav:x:1001:
+vpn_group:x:1002:gaurav,ubuntu
+amit:x:1003:
+vpn_group1:x:1004:gaurav,ubuntu
+rohit:x:1005:
+vpn_group2:x:1006:gaurav,ubuntu
+root@ip-172-31-9-122:/# cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+_apt:x:42:65534::/nonexistent:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-network:x:998:998:systemd Network Management:/:/usr/sbin/nologin
+systemd-timesync:x:996:996:systemd Time Synchronization:/:/usr/sbin/nologin
+dhcpcd:x:100:65534:DHCP Client Daemon,,,:/usr/lib/dhcpcd:/bin/false
+messagebus:x:101:101::/nonexistent:/usr/sbin/nologin
+syslog:x:102:102::/nonexistent:/usr/sbin/nologin
+systemd-resolve:x:991:991:systemd Resolver:/:/usr/sbin/nologin
+uuidd:x:103:103::/run/uuidd:/usr/sbin/nologin
+tss:x:104:104:TPM software stack,,,:/var/lib/tpm:/bin/false
+sshd:x:105:65534::/run/sshd:/usr/sbin/nologin
+pollinate:x:106:1::/var/cache/pollinate:/bin/false
+tcpdump:x:107:108::/nonexistent:/usr/sbin/nologin
+landscape:x:108:109::/var/lib/landscape:/usr/sbin/nologin
+fwupd-refresh:x:990:990:Firmware update daemon:/var/lib/fwupd:/usr/sbin/nologin
+polkitd:x:989:989:User for polkitd:/:/usr/sbin/nologin
+ec2-instance-connect:x:109:65534::/nonexistent:/usr/sbin/nologin
+_chrony:x:110:112:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+ubuntu:x:1000:1000:Ubuntu:/home/ubuntu:/bin/bash
+gaurav:x:1001:1001::/home/gaurav:/bin/sh
+amit:x:1002:1003::/home/amit:/bin/sh
+rohit:x:1003:1005::/home/rohit:/bin/sh
+root@ip-172-31-9-122:/#

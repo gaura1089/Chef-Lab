@@ -1,0 +1,1124 @@
+root@ip-172-31-9-122:/# ls
+bin                boot       dev  home  lib.usr-is-merged  lost+found  mnt    myfol1  opt   root  sbin                snap  sys  usr
+bin.usr-is-merged  cookbooks  etc  lib   lib64              media       myfol  nodes   proc  run   sbin.usr-is-merged  srv   tmp  var
+root@ip-172-31-9-122:/# cd cookbooks
+root@ip-172-31-9-122:/cookbooks# tree
+.
+├── mubook
+│   ├── CHANGELOG.md
+│   ├── LICENSE
+│   ├── Policyfile.rb
+│   ├── README.md
+│   ├── chefignore
+│   ├── compliance
+│   │   ├── README.md
+│   │   ├── inputs
+│   │   ├── profiles
+│   │   └── waivers
+│   ├── kitchen.yml
+│   ├── metadata.rb
+│   ├── recipes
+│   │   ├── default.rb
+│   │   ├── fol.rb
+│   │   ├── grp.rb
+│   │   └── user.rb
+│   ├── spec
+│   │   ├── spec_helper.rb
+│   │   └── unit
+│   │       └── recipes
+│   │           ├── fol_spec.rb
+│   │           ├── grp_spec.rb
+│   │           └── user_spec.rb
+│   └── test
+│       └── integration
+│           └── default
+│               ├── default_test.rb
+│               ├── fol_test.rb
+│               ├── grp_test.rb
+│               └── user_test.rb
+└── nodes
+    └── ip-172-31-9-122.ap-south-1.compute.internal.json
+
+14 directories, 21 files
+root@ip-172-31-9-122:/cookbooks# vi mubook/recipes/fol.rb
+root@ip-172-31-9-122:/cookbooks# cat mubook/recipes/fol.rb
+#
+# Cookbook:: Mybook
+# Recipe:: fol
+#
+# Copyright:: 2025, The Authors, All Rights Reserved.
+#
+#
+#
+#
+#
+
+
+
+
+
+directory '/myfol2' do
+  owner 'ubuntu'
+  group 'gaurav'
+  action :create
+end
+root@ip-172-31-9-122:/cookbooks# vi mubook/recipes/user.rb
+root@ip-172-31-9-122:/cookbooks# cat mubook/recipes/user.rb
+#
+# Cookbook:: Mybook
+# Recipe:: user
+#
+# Copyright:: 2025, The Authors, All Rights Reserved.
+#
+
+
+
+
+user 'rohit' do
+  manage_home true
+  password '$2y$10$Ckpb/wJov3.8qAGpNUsgduX59.OD14uSGois8QR4yDLLAotGZCavK'
+  action :create
+end
+
+root@ip-172-31-9-122:/cookbooks# vi mubook/recipes/grp.rb
+root@ip-172-31-9-122:/cookbooks# cat mubook/recipes/grp.rb
+#
+#
+# Cookbook:: Mybook
+# Recipe:: grp
+#
+# Copyright:: 2025, The Authors, All Rights Reserved.
+
+
+
+
+
+
+group 'vpn_group2' do
+  members ['gaurav','ubuntu']
+  append true
+end
+
+root@ip-172-31-9-122:/cookbooks# chef exec ruby -c mubook/recipes/user.rb
+Syntax OK
+root@ip-172-31-9-122:/cookbooks# chef exec ruby -c mubook/recipes/grp.rb
+Syntax OK
+root@ip-172-31-9-122:/cookbooks# chef exec ruby -c mubook/recipes/fol.rb
+Syntax OK
+root@ip-172-31-9-122:/cookbooks# chef-client -zr "recipe[mubook::user],recipe[mubook::grp],recipe[mubook::fol]"
+[2025-09-26T12:58:15+00:00] WARN: No config file found or specified on command line. Using command line options instead.
+Chef Infra Client, version 18.7.10
+Patents: https://www.chef.io/patents
+Infra Phase starting
+Resolving cookbooks for run list: ["mubook::user", "mubook::grp", "mubook::fol"]
+Synchronizing cookbooks:
+  - Mybook (0.1.0)
+Installing cookbook gem dependencies:
+Compiling cookbooks...
+Loading Chef InSpec profile files:
+Loading Chef InSpec input files:
+Loading Chef InSpec waiver files:
+Converging 3 resources
+Recipe: Mybook::user
+  * linux_user[rohit] action create
+    - create user rohit
+Recipe: Mybook::grp
+  * group[vpn_group2] action create
+    - create group vpn_group2
+Recipe: Mybook::fol
+  * directory[/myfol2] action create
+    - create new directory /myfol2
+    - change owner from '' to 'ubuntu'
+    - change group from '' to 'gaurav'
+
+Running handlers:
+Running handlers complete
+Infra Phase complete, 3/3 resources updated in 01 seconds
+root@ip-172-31-9-122:/cookbooks# cd ..
+root@ip-172-31-9-122:/# ls
+bin                boot       dev  home  lib.usr-is-merged  lost+found  mnt    myfol1  nodes  proc  run   sbin.usr-is-merged  srv  tmp  var
+bin.usr-is-merged  cookbooks  etc  lib   lib64              media       myfol  myfol2  opt    root  sbin  snap                sys  usr
+root@ip-172-31-9-122:/# cat /etc/group
+root:x:0:
+daemon:x:1:
+bin:x:2:
+sys:x:3:
+adm:x:4:syslog,ubuntu
+tty:x:5:
+disk:x:6:
+lp:x:7:
+mail:x:8:
+news:x:9:
+uucp:x:10:
+man:x:12:
+proxy:x:13:
+kmem:x:15:
+dialout:x:20:
+fax:x:21:
+voice:x:22:
+cdrom:x:24:ubuntu
+floppy:x:25:
+tape:x:26:
+sudo:x:27:ubuntu
+audio:x:29:
+dip:x:30:ubuntu
+www-data:x:33:
+backup:x:34:
+operator:x:37:
+list:x:38:
+irc:x:39:
+src:x:40:
+shadow:x:42:
+utmp:x:43:
+video:x:44:
+sasl:x:45:
+plugdev:x:46:
+staff:x:50:
+games:x:60:
+users:x:100:
+nogroup:x:65534:
+systemd-journal:x:999:
+systemd-network:x:998:
+crontab:x:997:
+systemd-timesync:x:996:
+input:x:995:
+sgx:x:994:
+kvm:x:993:
+render:x:992:
+messagebus:x:101:
+syslog:x:102:
+systemd-resolve:x:991:
+uuidd:x:103:
+tss:x:104:
+lxd:x:105:ubuntu
+_ssh:x:106:
+rdma:x:107:
+tcpdump:x:108:
+landscape:x:109:
+fwupd-refresh:x:990:
+polkitd:x:989:
+admin:x:110:
+netdev:x:111:
+_chrony:x:112:
+ubuntu:x:1000:
+gaurav:x:1001:
+vpn_group:x:1002:gaurav,ubuntu
+amit:x:1003:
+vpn_group1:x:1004:gaurav,ubuntu
+rohit:x:1005:
+vpn_group2:x:1006:gaurav,ubuntu
+root@ip-172-31-9-122:/# cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+_apt:x:42:65534::/nonexistent:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-network:x:998:998:systemd Network Management:/:/usr/sbin/nologin
+systemd-timesync:x:996:996:systemd Time Synchronization:/:/usr/sbin/nologin
+dhcpcd:x:100:65534:DHCP Client Daemon,,,:/usr/lib/dhcpcd:/bin/false
+messagebus:x:101:101::/nonexistent:/usr/sbin/nologin
+syslog:x:102:102::/nonexistent:/usr/sbin/nologin
+systemd-resolve:x:991:991:systemd Resolver:/:/usr/sbin/nologin
+uuidd:x:103:103::/run/uuidd:/usr/sbin/nologin
+tss:x:104:104:TPM software stack,,,:/var/lib/tpm:/bin/false
+sshd:x:105:65534::/run/sshd:/usr/sbin/nologin
+pollinate:x:106:1::/var/cache/pollinate:/bin/false
+tcpdump:x:107:108::/nonexistent:/usr/sbin/nologin
+landscape:x:108:109::/var/lib/landscape:/usr/sbin/nologin
+fwupd-refresh:x:990:990:Firmware update daemon:/var/lib/fwupd:/usr/sbin/nologin
+polkitd:x:989:989:User for polkitd:/:/usr/sbin/nologin
+ec2-instance-connect:x:109:65534::/nonexistent:/usr/sbin/nologin
+_chrony:x:110:112:Chrony daemon,,,:/var/lib/chrony:/usr/sbin/nologin
+ubuntu:x:1000:1000:Ubuntu:/home/ubuntu:/bin/bash
+gaurav:x:1001:1001::/home/gaurav:/bin/sh
+amit:x:1002:1003::/home/amit:/bin/sh
+rohit:x:1003:1005::/home/rohit:/bin/sh
+root@ip-172-31-9-122:/# history
+    1  wget https://packages.chef.io/files/stable/chef-workstation/0.4.2/ubuntu/18.04/chef-workstation_0.4.2-1_amd64.deb
+    2  dpkg -i chef-workstation_0.4.2-1_amd64.deb
+    3  chef -v
+    4  curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P chef-workstation
+    5  cat /etc/os-release
+    6  chef -v
+    7  cd ../..
+    8  pwd
+    9  mkdir cookbook
+   10  cd cookbook
+   11  chef generate cookbook mybook
+   12  tree
+   13  apt-get install tree
+   14  tree -version
+   15  apt-get update
+   16  apt-get install tree
+   17  tree
+   18  clear
+   19  tree
+   20  chef generate recipe adduser
+   21  ls
+   22  cd mybook
+   23  chef generate recipe adduser
+   24  chef generate recipe creategroup
+   25  chef generate recipe createfol
+   26  tree
+   27  vi recipes/default.rb
+   28  vi recipes/adduser.rb
+   29  vi recipes/createfol.rb
+   30*
+   31  chef exec ruby -c adduser.rb
+   32  cd ..
+   33  chef exec ruby -c mybook/adduser.rb
+   34  chef exec ruby -c mybook/recipes/adduser.rb
+   35  cd mybook
+   36  chef exec ruby -c recipes/createfol.rb
+   37*
+   38  cd ..
+   39  chef-client -zr "recipe[mybook::adduser],recipe[mybook::createfol],recipe[mybook::creategroup]"
+   40  chef cookbook
+   41  chef cookbook mybook
+   42  knife cookbook list
+   43  ls /cookbook
+   44  chef-client --local-mode --runlist 'recipe[my_cookbook]'
+   45  chef-client --local-mode --runlist 'recipe[mybook]'
+   46  tree
+   47  chef-client -zr "recipe[mybook::adduser],recipe[mybook::createfol],recipe[mybook::creategroup]"
+   48  pwd
+   49  cd mybook
+   50  chef-client -zr "recipe[mybook::adduser],recipe[mybook::createfol],recipe[mybook::creategroup]"
+   51  tree
+   52  cd ..
+   53  chef-client -zr "recipe[mybook::adduser],recipe[mybook::createfol],recipe[mybook::creategroup]"
+   54  vi recipes/adduser.rb
+   55  cat recipes/adduser.rb
+   56  cat mybook/recipes/adduser.rb
+   57  cat mybook/recipes/creategroup.rb
+   58  tree
+   59  cat recipes/createfol.rb
+   60  cat mybook/recipes/createfol.rb
+   61  rm -rf *
+   62  ls
+   63  clear
+   64  chef generate Mybook
+   65  chef generate cookbook Mybook
+   66  cd Mycookbook
+   67  cd Mybook
+   68  chef generate recipe user
+   69  chef generate recipe grp
+   70  chef generate recipe fol
+   71  tree
+   72  vi recipes/fol.rb
+   73  vi recipes/grp.rb
+   74  vi recipes/user.rb
+   75  chef exec ruby -c recipes/user.rb
+   76  chef exec ruby -c recipes/grp.rb
+   77  chef exec ruby -c recipes/fol.rb
+   78  cd ..
+   79  tree
+   80  chef-client -zr "recipe[Mybook::user],recipe[Mybook::fol],recipe[Mybook::grp]"
+   81  cd ..
+   82  cd home
+   83  ls
+   84  cd ubuntu
+   85  cd ..
+   86  ls
+   87  rname cookbook Cookbooks
+   88  move cookbook Cookbooks
+   89  move cookbook /Cookbooks
+   90  rename cookbook Cookbooks
+   91  mv cookbook Cookbooks
+   92  ls
+   93  cd Cookbooks
+   94  chef-client -zr "recipe[Mybook::user],recipe[Mybook::fol],recipe[Mybook::grp]"
+   95  ls
+   96  cd ..
+   97  cd home
+   98  cd ubuntu
+   99  ls
+  100  cp /Cookbooks/Mybook .
+  101  ls
+  102  cp /Cookbooks/Mybook .
+  103  cp -r /Cookbooks/Mybook .
+  104  ls
+  105  mkdir Cookbooks
+  106  cd Cookbooks
+  107  cp -r /home/ubuntu/Mybook .
+  108  ls
+  109  cd ..
+  110  ls
+  111  rm Mybook
+  112  rm -rf Mybook
+  113  ls
+  114  cd Cookbooks
+  115  ls
+  116  tree
+  117  chef-client -zr "recipe[Mybook::user],recipe[Mybook::fol],recipe[Mybook::grp]"
+  118  chef exec ruby -c recipes/user.rb
+  119  rm -rf *
+  120  chef generate cookbook Newbook
+  121  cd Newbook
+  122  chef generate recipe user
+  123  chef generate recipe grp
+  124  chef generate recipe fol
+  125  vi recipes/fol.rb
+  126  vi recipes/user.rb
+  127  vi recipes/grp.rb
+  128  chef exec ruby -c recipes/user.rb
+  129  chef exec ruby -c recipes/grp.rb
+  130  chef exec ruby -c recipes/fol.rb
+  131  cd ..
+  132  chef-client -zr "recipe[Newbook::user],recipe[Newbook::grp],recipe[Newbook::fol]"
+  133  --config-option cookbook_path=/home/ubuntu/Cookbooks
+  134  chef-client -z --config-option cookbook_path=/home/ubuntu/Cookbooks
+  135  chef-client -zr "recipe[Newbook::user],recipe[Newbook::grp],recipe[Newbook::fol]"
+  136  chef-client -zr --config-option cookbook_path=/home/ubuntu/Cookbooks
+  137  cd ..
+  138  chef-client -z --config-option cookbook_path=/home/ubuntu/Cookbooks
+  139  sudo chef-client -z --config-option cookbook_path=/home/ubuntu/Cookbooks --runlist 'recipe[Newbook::user],recipe[Newbook::grp],recipe[Newbook::fol]'
+  140  vi recipes/grp.rb
+  141  cd /cookbooks/Newbook
+  142  cd /Cookbooks/Newbook
+  143  cd Cookbooks/Newbook
+  144  vi recipes/grp.rb
+  145  cd ..
+  146  chef-client -z --config-option cookbook_path=/home/ubuntu/Cookbooks
+  147  cd Cookbooks
+  148  chef-client -zr "recipe[Newbook::user],recipe[Newbook::grp],recipe[Newbook::fol]"
+  149  vi Newbook/recipes/grp.rb
+  150  chef-client -zr "recipe[Newbook::user],recipe[Newbook::grp],recipe[Newbook::fol]"
+  151  chef -v
+  152  chef-client -zr "recipe[Newbook::user],recipe[Newbook::grp],recipe[Newbook::fol]"
+  153  mv Newbook newbook
+  154  ls
+  155  chef-client -zr "recipe[newbook::user],recipe[newbook::grp],recipe[newbook::fol]"
+  156  cd ..
+  157  mv Cookbooks cookbooks
+  158  ls
+  159  cd cookbooks
+  160  chef-client -zr "recipe[newbook::user],recipe[newbook::grp],recipe[newbook::fol]"
+  161  cd ../../..
+  162  ls
+  163  mv Cookbooks cookbooks
+  164  ls
+  165  cd cookbooks
+  166  ls
+  167  mv Mybook mubook
+  168  ls
+  169  cd mubook
+  170  ls
+  171  tree
+  172  vi recipes/fol.rb
+  173  vi recipes/user.rb
+  174  vi recipes/grp.rb
+  175  cd ..
+  176  chef-client -zr "recipe[mubook::user],recipe[mubook::grp],recipe[mubook::fol]"
+  177  cd ..
+  178  ls
+  179  clear
+  180  ls
+  181  cd cookbooks
+  182  tree
+  183  vi mubook/recipes/fol.rb
+  184  cat mubook/recipes/fol.rb
+  185  vi mubook/recipes/user.rb
+  186  cat mubook/recipes/user.rb
+  187*
+  188  cat mubook/recipes/grp.rb
+  189  chef exec ruby -c mubook/recipes/user.rb
+  190  chef exec ruby -c mubook/recipes/grp.rb
+  191  chef exec ruby -c mubook/recipes/fol.rb
+  192  chef-client -zr "recipe[mubook::user],recipe[mubook::grp],recipe[mubook::fol]"
+  193  cd ..
+  194  ls
+  195  cat /etc/group
+  196  cat /etc/passwd
+  197  history
+root@ip-172-31-9-122:/#
+root@ip-172-31-9-122:/# ls
+bin                boot       dev  home  lib.usr-is-merged  lost+found  mnt    myfol1  nodes  proc  run   sbin.usr-is-merged  srv  tmp  var
+bin.usr-is-merged  cookbooks  etc  lib   lib64              media       myfol  myfol2  opt    root  sbin  snap                sys  usr
+root@ip-172-31-9-122:/#
+root@ip-172-31-9-122:/# cd cookbooks
+root@ip-172-31-9-122:/cookbooks# ls
+mubook  nodes
+root@ip-172-31-9-122:/cookbooks# chef generate cookbook mybook
+Generating cookbook mybook
+- Ensuring correct cookbook content
+- Committing cookbook files to git
+
+Your cookbook is ready. Type `cd mybook` to enter it.
+
+There are several commands you can run to get started locally developing and testing your cookbook.
+
+Why not start by writing an InSpec test? Tests for the default recipe are stored at:
+
+test/integration/default/default_test.rb
+
+If you'd prefer to dive right in, the default recipe can be found at:
+
+recipes/default.rb
+
+root@ip-172-31-9-122:/cookbooks# cd mycook
+bash: cd: mycook: No such file or directory
+root@ip-172-31-9-122:/cookbooks# chef generate recipe apache
+Error: Directory /cookbooks is not a cookbook
+Usage: chef generate recipe [path/to/cookbook] NAME [options]
+        --chef-license ACCEPTANCE    Accept the license for this product and any contained products ('accept', 'accept-no-persist', or 'accept-silent')
+    -c, --config CONFIG_FILE         Path to configuration file
+    -C, --copyright COPYRIGHT        Name of the copyright holder - defaults to 'The Authors'
+    -D, --debug                      Enable stacktraces and other debug output
+    -m, --email EMAIL                Email address of the author - defaults to 'you@example.com'
+    -a, --generator-arg KEY=VALUE    Use to set arbitrary attribute KEY to VALUE in the code_generator cookbook
+    -h, --help                       Show this message
+    -I, --license LICENSE            all_rights, apachev2, mit, gplv2, gplv3 - defaults to all_rights
+    -v, --version                    Show Chef Workstation version
+    -y, --yaml                       Generate recipe using YAML configuration format.
+    -g GENERATOR_COOKBOOK_PATH,      Use GENERATOR_COOKBOOK_PATH for the code_generator cookbook
+        --generator-cookbook
+
+root@ip-172-31-9-122:/cookbooks# cd mybook
+root@ip-172-31-9-122:/cookbooks/mybook# chef generate recipe apache
+Recipe: code_generator::recipe
+  * directory[/cookbooks/mybook/spec/unit/recipes] action create
+    - create new directory /cookbooks/mybook/spec/unit/recipes
+  * cookbook_file[/cookbooks/mybook/spec/spec_helper.rb] action create_if_missing
+    - create new file /cookbooks/mybook/spec/spec_helper.rb
+    - update content in file /cookbooks/mybook/spec/spec_helper.rb from none to 945e09
+    (diff output suppressed by config)
+  * template[/cookbooks/mybook/spec/unit/recipes/apache_spec.rb] action create_if_missing
+    - create new file /cookbooks/mybook/spec/unit/recipes/apache_spec.rb
+    - update content in file /cookbooks/mybook/spec/unit/recipes/apache_spec.rb from none to a35066
+    (diff output suppressed by config)
+  * directory[/cookbooks/mybook/test/integration/default] action create (up to date)
+  * template[/cookbooks/mybook/test/integration/default/apache_test.rb] action create_if_missing
+    - create new file /cookbooks/mybook/test/integration/default/apache_test.rb
+    - update content in file /cookbooks/mybook/test/integration/default/apache_test.rb from none to 2c3667
+    (diff output suppressed by config)
+  * template[/cookbooks/mybook/recipes/apache.rb] action create
+    - create new file /cookbooks/mybook/recipes/apache.rb
+    - update content in file /cookbooks/mybook/recipes/apache.rb from none to cbc856
+    (diff output suppressed by config)
+root@ip-172-31-9-122:/cookbooks/mybook# vi recipes/apache.rb
+root@ip-172-31-9-122:/cookbooks/mybook# tree
+.
+├── CHANGELOG.md
+├── LICENSE
+├── Policyfile.rb
+├── README.md
+├── chefignore
+├── compliance
+│   ├── README.md
+│   ├── inputs
+│   ├── profiles
+│   └── waivers
+├── kitchen.yml
+├── metadata.rb
+├── recipes
+│   ├── apache.rb
+│   └── default.rb
+├── spec
+│   ├── spec_helper.rb
+│   └── unit
+│       └── recipes
+│           └── apache_spec.rb
+└── test
+    └── integration
+        └── default
+            ├── apache_test.rb
+            └── default_test.rb
+
+12 directories, 14 files
+root@ip-172-31-9-122:/cookbooks/mybook# chef generate recipe docker
+Recipe: code_generator::recipe
+  * directory[/cookbooks/mybook/spec/unit/recipes] action create (up to date)
+  * cookbook_file[/cookbooks/mybook/spec/spec_helper.rb] action create_if_missing (up to date)
+  * template[/cookbooks/mybook/spec/unit/recipes/docker_spec.rb] action create_if_missing
+    - create new file /cookbooks/mybook/spec/unit/recipes/docker_spec.rb
+    - update content in file /cookbooks/mybook/spec/unit/recipes/docker_spec.rb from none to 9be9c5
+    (diff output suppressed by config)
+  * directory[/cookbooks/mybook/test/integration/default] action create (up to date)
+  * template[/cookbooks/mybook/test/integration/default/docker_test.rb] action create_if_missing
+    - create new file /cookbooks/mybook/test/integration/default/docker_test.rb
+    - update content in file /cookbooks/mybook/test/integration/default/docker_test.rb from none to 8df64b
+    (diff output suppressed by config)
+  * template[/cookbooks/mybook/recipes/docker.rb] action create
+    - create new file /cookbooks/mybook/recipes/docker.rb
+    - update content in file /cookbooks/mybook/recipes/docker.rb from none to 22c8ea
+    (diff output suppressed by config)
+root@ip-172-31-9-122:/cookbooks/mybook# vi recipes/docker.rb
+root@ip-172-31-9-122:/cookbooks/mybook# chef exec ruby -c recipes/docker.rb
+Syntax OK
+root@ip-172-31-9-122:/cookbooks/mybook# chef exec ruby -c recipes/apache.rb
+Syntax OK
+root@ip-172-31-9-122:/cookbooks/mybook# vi recipes/default.rb
+root@ip-172-31-9-122:/cookbooks/mybook# tree
+.
+├── CHANGELOG.md
+├── LICENSE
+├── Policyfile.rb
+├── README.md
+├── chefignore
+├── compliance
+│   ├── README.md
+│   ├── inputs
+│   ├── profiles
+│   └── waivers
+├── kitchen.yml
+├── metadata.rb
+├── recipes
+│   ├── apache.rb
+│   ├── default.rb
+│   └── docker.rb
+├── spec
+│   ├── spec_helper.rb
+│   └── unit
+│       └── recipes
+│           ├── apache_spec.rb
+│           └── docker_spec.rb
+└── test
+    └── integration
+        └── default
+            ├── apache_test.rb
+            ├── default_test.rb
+            └── docker_test.rb
+
+12 directories, 17 files
+root@ip-172-31-9-122:/cookbooks/mybook# cat default.rb
+cat: default.rb: No such file or directory
+root@ip-172-31-9-122:/cookbooks/mybook# cat recipes/default.rb
+#
+# Cookbook:: mybook
+# Recipe:: default
+#
+# Copyright:: 2025, The Authors, All Rights Reserved.
+#
+
+
+include_recipe "mybook::docker"
+include_recipe "mybook::apache"
+root@ip-172-31-9-122:/cookbooks/mybook# cd ..
+root@ip-172-31-9-122:/cookbooks# ls
+mubook  mybook  nodes
+root@ip-172-31-9-122:/cookbooks# cd mubook
+root@ip-172-31-9-122:/cookbooks/mubook# vi recipes/user.rb
+root@ip-172-31-9-122:/cookbooks/mubook# vi recipes/grp.rb
+ 17L, 171B written
+root@ip-172-31-9-122:/cookbooks/mubook# vi recipes/fol.rb
+root@ip-172-31-9-122:/cookbooks/mubook# vi recipes/default.rb
+root@ip-172-31-9-122:/cookbooks/mubook# cat recipes/default.rb
+#
+# Cookbook:: Mybook
+# Recipe:: default
+#
+# Copyright:: 2025, The Authors, All Rights Reserved.
+#
+
+
+
+
+
+include_recipe "mubook::user"
+include_recipe "mubook::grp"
+include_recipe "mubook::fol"
+root@ip-172-31-9-122:/cookbooks/mubook# cd ..
+root@ip-172-31-9-122:/cookbooks# chef exec ruby -c "recipe[mubook::default]"
+ruby: No such file or directory -- recipe[mubook::default] (LoadError)
+root@ip-172-31-9-122:/cookbooks# tree
+.
+├── mubook
+│   ├── CHANGELOG.md
+│   ├── LICENSE
+│   ├── Policyfile.rb
+│   ├── README.md
+│   ├── chefignore
+│   ├── compliance
+│   │   ├── README.md
+│   │   ├── inputs
+│   │   ├── profiles
+│   │   └── waivers
+│   ├── kitchen.yml
+│   ├── metadata.rb
+│   ├── recipes
+│   │   ├── default.rb
+│   │   ├── fol.rb
+│   │   ├── grp.rb
+│   │   └── user.rb
+│   ├── spec
+│   │   ├── spec_helper.rb
+│   │   └── unit
+│   │       └── recipes
+│   │           ├── fol_spec.rb
+│   │           ├── grp_spec.rb
+│   │           └── user_spec.rb
+│   └── test
+│       └── integration
+│           └── default
+│               ├── default_test.rb
+│               ├── fol_test.rb
+│               ├── grp_test.rb
+│               └── user_test.rb
+├── mybook
+│   ├── CHANGELOG.md
+│   ├── LICENSE
+│   ├── Policyfile.rb
+│   ├── README.md
+│   ├── chefignore
+│   ├── compliance
+│   │   ├── README.md
+│   │   ├── inputs
+│   │   ├── profiles
+│   │   └── waivers
+│   ├── kitchen.yml
+│   ├── metadata.rb
+│   ├── recipes
+│   │   ├── apache.rb
+│   │   ├── default.rb
+│   │   └── docker.rb
+│   ├── spec
+│   │   ├── spec_helper.rb
+│   │   └── unit
+│   │       └── recipes
+│   │           ├── apache_spec.rb
+│   │           └── docker_spec.rb
+│   └── test
+│       └── integration
+│           └── default
+│               ├── apache_test.rb
+│               ├── default_test.rb
+│               └── docker_test.rb
+└── nodes
+    └── ip-172-31-9-122.ap-south-1.compute.internal.json
+
+26 directories, 38 files
+root@ip-172-31-9-122:/cookbooks# chef exec ruby -c "recipe[mubook::user]"
+ruby: No such file or directory -- recipe[mubook::user] (LoadError)
+root@ip-172-31-9-122:/cookbooks# ls
+mubook  mybook  nodes
+root@ip-172-31-9-122:/cookbooks# chef-client -zr "recipe[mubook::default],recipe[mybook::default]"
+[2025-09-26T13:29:26+00:00] WARN: No config file found or specified on command line. Using command line options instead.
+Chef Infra Client, version 18.7.10
+Patents: https://www.chef.io/patents
+Infra Phase starting
+Resolving cookbooks for run list: ["mubook::default", "mybook::default"]
+Synchronizing cookbooks:
+  - mybook (0.1.0)
+  - Mybook (0.1.0)
+Installing cookbook gem dependencies:
+Compiling cookbooks...
+Loading Chef InSpec profile files:
+Loading Chef InSpec input files:
+Loading Chef InSpec waiver files:
+Converging 9 resources
+Recipe: Mybook::user
+  * linux_user[deepak] action create
+    - create user deepak
+Recipe: Mybook::grp
+  * group[url_group] action create
+    - create group url_group
+Recipe: Mybook::fol
+  * directory[/myfol5] action create
+    - create new directory /myfol5
+    - change owner from '' to 'ubuntu'
+    - change group from '' to 'gaurav'
+Recipe: mybook::docker
+  * apt_update[update] action update
+    * directory[/var/lib/apt/periodic] action create (up to date)
+    * directory[/etc/apt/apt.conf.d] action create (up to date)
+    * file[/etc/apt/apt.conf.d/15update-stamp] action create_if_missing (up to date)
+    * execute[apt-get -q update] action run
+      - execute ["apt-get", "-q", "update"]
+    - force update new lists of packages
+  * apt_package[docker.io] action install
+    - install version 27.5.1-0ubuntu3~24.04.2 of package docker.io
+  * service[docker] action enable (up to date)
+  * service[docker] action start (up to date)
+Recipe: mybook::apache
+  * apt_package[apache2] action install
+    - install version 2.4.58-1ubuntu8.8 of package apache2
+  * service[apache2] action enable (up to date)
+  * service[apache2] action start (up to date)
+  * file[/var/www/html/index.html] action create
+    - update content in file /var/www/html/index.html from 6faef4 to c3cf28
+    --- /var/www/html/index.html        2025-09-26 13:29:59.712151355 +0000
+    +++ /var/www/html/.chef-index20250926-5461-gxfpuf.html      2025-09-26 13:30:06.664912653 +0000
+    @@ -1,364 +1,2 @@
+    -<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    -<html xmlns="http://www.w3.org/1999/xhtml">
+    -  <!--
+    -    Modified from the Debian original for Ubuntu
+    -    Last updated: 2022-03-22
+    -    See: https://launchpad.net/bugs/1966004
+    -  -->
+    -  <head>
+    -    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    -    <title>Apache2 Ubuntu Default Page: It works</title>
+    -    <style type="text/css" media="screen">
+    -  * {
+    -    margin: 0px 0px 0px 0px;
+    -    padding: 0px 0px 0px 0px;
+    -  }
+    -
+    -  body, html {
+    -    padding: 3px 3px 3px 3px;
+    -
+    -    background-color: #D8DBE2;
+    -
+    -    font-family: Ubuntu, Verdana, sans-serif;
+    -    font-size: 11pt;
+    -    text-align: center;
+    -  }
+    -
+    -  div.main_page {
+    -    position: relative;
+    -    display: table;
+    -
+    -    width: 800px;
+    -
+    -    margin-bottom: 3px;
+    -    margin-left: auto;
+    -    margin-right: auto;
+    -    padding: 0px 0px 0px 0px;
+    -
+    -    border-width: 2px;
+    -    border-color: #212738;
+    -    border-style: solid;
+    -
+    -    background-color: #FFFFFF;
+    -
+    -    text-align: center;
+    -  }
+    -
+    -  div.page_header {
+    -    height: 180px;
+    -    width: 100%;
+    -
+    -    background-color: #F5F6F7;
+    -  }
+    -
+    -  div.page_header span {
+    -    margin: 15px 0px 0px 50px;
+    -
+    -    font-size: 180%;
+    -    font-weight: bold;
+    -  }
+    -
+    -  div.page_header img {
+    -    margin: 3px 0px 0px 40px;
+    -
+    -    border: 0px 0px 0px;
+    -  }
+    -
+    -  div.banner {
+    -    padding: 9px 6px 9px 6px;
+    -    background-color: #E9510E;
+    -    color: #FFFFFF;
+    -    font-weight: bold;
+    -    font-size: 112%;
+    -    text-align: center;
+    -    position: absolute;
+    -    left: 40%;
+    -    bottom: 30px;
+    -    width: 20%;
+    -  }
+    -
+    -  div.table_of_contents {
+    -    clear: left;
+    -
+    -    min-width: 200px;
+    -
+    -    margin: 3px 3px 3px 3px;
+    -
+    -    background-color: #FFFFFF;
+    -
+    -    text-align: left;
+    -  }
+    -
+    -  div.table_of_contents_item {
+    -    clear: left;
+    -
+    -    width: 100%;
+    -
+    -    margin: 4px 0px 0px 0px;
+    -
+    -    background-color: #FFFFFF;
+    -
+    -    color: #000000;
+    -    text-align: left;
+    -  }
+    -
+    -  div.table_of_contents_item a {
+    -    margin: 6px 0px 0px 6px;
+    -  }
+    -
+    -  div.content_section {
+    -    margin: 3px 3px 3px 3px;
+    -
+    -    background-color: #FFFFFF;
+    -
+    -    text-align: left;
+    -  }
+    -
+    -  div.content_section_text {
+    -    padding: 4px 8px 4px 8px;
+    -
+    -    color: #000000;
+    -    font-size: 100%;
+    -  }
+    -
+    -  div.content_section_text pre {
+    -    margin: 8px 0px 8px 0px;
+    -    padding: 8px 8px 8px 8px;
+    -
+    -    border-width: 1px;
+    -    border-style: dotted;
+    -    border-color: #000000;
+    -
+    -    background-color: #F5F6F7;
+    -
+    -    font-style: italic;
+    -  }
+    -
+    -  div.content_section_text p {
+    -    margin-bottom: 6px;
+    -  }
+    -
+    -  div.content_section_text ul, div.content_section_text li {
+    -    padding: 4px 8px 4px 16px;
+    -  }
+    -
+    -  div.section_header {
+    -    padding: 3px 6px 3px 6px;
+    -
+    -    background-color: #8E9CB2;
+    -
+    -    color: #FFFFFF;
+    -    font-weight: bold;
+    -    font-size: 112%;
+    -    text-align: center;
+    -  }
+    -
+    -  div.section_header_grey {
+    -    background-color: #9F9386;
+    -  }
+    -
+    -  .floating_element {
+    -    position: relative;
+    -    float: left;
+    -  }
+    -
+    -  div.table_of_contents_item a,
+    -  div.content_section_text a {
+    -    text-decoration: none;
+    -    font-weight: bold;
+    -  }
+    -
+    -  div.table_of_contents_item a:link,
+    -  div.table_of_contents_item a:visited,
+    -  div.table_of_contents_item a:active {
+    -    color: #000000;
+    -  }
+    -
+    -  div.table_of_contents_item a:hover {
+    -    background-color: #000000;
+    -
+    -    color: #FFFFFF;
+    -  }
+    -
+    -  div.content_section_text a:link,
+    -  div.content_section_text a:visited,
+    -   div.content_section_text a:active {
+    -    background-color: #DCDFE6;
+    -
+    -    color: #000000;
+    -  }
+    -
+    -  div.content_section_text a:hover {
+    -    background-color: #000000;
+    -
+    -    color: #DCDFE6;
+    -  }
+    -
+    -  div.validator {
+    -  }
+    -    </style>
+    -  </head>
+    -  <body>
+    -    <div class="main_page">
+    -      <div class="page_header floating_element">
+    -        <img src="icons/ubuntu-logo.png" alt="Ubuntu Logo"
+    -             style="width:184px;height:146px;" class="floating_element" />
+    -        <div>
+    -          <span style="margin-top: 1.5em;" class="floating_element">
+    -            Apache2 Default Page
+    -          </span>
+    -        </div>
+    -        <div class="banner">
+    -          <div id="about"></div>
+    -          It works!
+    -        </div>
+    -
+    -      </div>
+    -      <div class="content_section floating_element">
+    -        <div class="content_section_text">
+    -          <p>
+    -                This is the default welcome page used to test the correct
+    -                operation of the Apache2 server after installation on Ubuntu systems.
+    -                It is based on the equivalent page on Debian, from which the Ubuntu Apache
+    -                packaging is derived.
+    -                If you can read this page, it means that the Apache HTTP server installed at
+    -                this site is working properly. You should <b>replace this file</b> (located at
+    -                <tt>/var/www/html/index.html</tt>) before continuing to operate your HTTP server.
+    -          </p>
+    -
+    -          <p>
+    -                If you are a normal user of this web site and don't know what this page is
+    -                about, this probably means that the site is currently unavailable due to
+    -                maintenance.
+    -                If the problem persists, please contact the site's administrator.
+    -          </p>
+    -
+    -        </div>
+    -        <div class="section_header">
+    -          <div id="changes"></div>
+    -                Configuration Overview
+    -        </div>
+    -        <div class="content_section_text">
+    -          <p>
+    -                Ubuntu's Apache2 default configuration is different from the
+    -                upstream default configuration, and split into several files optimized for
+    -                interaction with Ubuntu tools. The configuration system is
+    -                <b>fully documented in
+    -                /usr/share/doc/apache2/README.Debian.gz</b>. Refer to this for the full
+    -                documentation. Documentation for the web server itself can be
+    -                found by accessing the <a href="/manual">manual</a> if the <tt>apache2-doc</tt>
+    -                package was installed on this server.
+    -          </p>
+    -          <p>
+    -                The configuration layout for an Apache2 web server installation on Ubuntu systems is as follows:
+    -          </p>
+    -          <pre>
+    -/etc/apache2/
+    -|-- apache2.conf
+    -|       `--  ports.conf
+    -|-- mods-enabled
+    -|       |-- *.load
+    -|       `-- *.conf
+    -|-- conf-enabled
+    -|       `-- *.conf
+    -|-- sites-enabled
+    -|       `-- *.conf
+    -          </pre>
+    -          <ul>
+    -                        <li>
+    -                           <tt>apache2.conf</tt> is the main configuration
+    -                           file. It puts the pieces together by including all remaining configuration
+    -                           files when starting up the web server.
+    -                        </li>
+    -
+    -                        <li>
+    -                           <tt>ports.conf</tt> is always included from the
+    -                           main configuration file. It is used to determine the listening ports for
+    -                           incoming connections, and this file can be customized anytime.
+    -                        </li>
+    -
+    -                        <li>
+    -                           Configuration files in the <tt>mods-enabled/</tt>,
+    -                           <tt>conf-enabled/</tt> and <tt>sites-enabled/</tt> directories contain
+    -                           particular configuration snippets which manage modules, global configuration
+    -                           fragments, or virtual host configurations, respectively.
+    -                        </li>
+    -
+    -                        <li>
+    -                           They are activated by symlinking available
+    -                           configuration files from their respective
+    -                           *-available/ counterparts. These should be managed
+    -                           by using our helpers
+    -                           <tt>
+    -                                a2enmod,
+    -                                a2dismod,
+    -                           </tt>
+    -                           <tt>
+    -                                a2ensite,
+    -                                a2dissite,
+    -                            </tt>
+    -                                and
+    -                           <tt>
+    -                                a2enconf,
+    -                                a2disconf
+    -                           </tt>. See their respective man pages for detailed information.
+    -                        </li>
+    -
+    -                        <li>
+    -                           The binary is called apache2 and is managed using systemd, so to
+    -                           start/stop the service use <tt>systemctl start apache2</tt> and
+    -                           <tt>systemctl stop apache2</tt>, and use <tt>systemctl status apache2</tt>
+    -                           and <tt>journalctl -u apache2</tt> to check status.  <tt>system</tt>
+    -                           and <tt>apache2ctl</tt> can also be used for service management if
+    -                           desired.
+    -                           <b>Calling <tt>/usr/bin/apache2</tt> directly will not work</b> with the
+    -                           default configuration.
+    -                        </li>
+    -          </ul>
+    -        </div>
+    -
+    -        <div class="section_header">
+    -            <div id="docroot"></div>
+    -                Document Roots
+    -        </div>
+    -
+    -        <div class="content_section_text">
+    -            <p>
+    -                By default, Ubuntu does not allow access through the web browser to
+    -                <em>any</em> file outside of those located in <tt>/var/www</tt>,
+    -                <a href="http://httpd.apache.org/docs/2.4/mod/mod_userdir.html" rel="nofollow">public_html</a>
+    -                directories (when enabled) and <tt>/usr/share</tt> (for web
+    -                applications). If your site is using a web document root
+    -                located elsewhere (such as in <tt>/srv</tt>) you may need to whitelist your
+    -                document root directory in <tt>/etc/apache2/apache2.conf</tt>.
+    -            </p>
+    -            <p>
+    -                The default Ubuntu document root is <tt>/var/www/html</tt>. You
+    -                can make your own virtual hosts under /var/www.
+    -            </p>
+    -        </div>
+    -
+    -        <div class="section_header">
+    -          <div id="bugs"></div>
+    -                Reporting Problems
+    -        </div>
+    -        <div class="content_section_text">
+    -          <p>
+    -                Please use the <tt>ubuntu-bug</tt> tool to report bugs in the
+    -                Apache2 package with Ubuntu. However, check <a
+    -                href="https://bugs.launchpad.net/ubuntu/+source/apache2"
+    -                rel="nofollow">existing bug reports</a> before reporting a new bug.
+    -          </p>
+    -          <p>
+    -                Please report bugs specific to modules (such as PHP and others)
+    -                to their respective packages, not to the web server itself.
+    -          </p>
+    -        </div>
+    -
+    -      </div>
+    -    </div>
+    -    <div class="validator">
+    -    </div>
+    -  </body>
+    -</html>
+    +<h1>Welcome to Apache Server - Managed by Chef!</h1>
+
+Running handlers:
+Running handlers complete
+Infra Phase complete, 8/15 resources updated in 40 seconds
+root@ip-172-31-9-122:/cookbooks#
