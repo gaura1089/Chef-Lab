@@ -1,0 +1,27 @@
+https://packages.chef.io/files/stable/chef-workstation/0.4.2/ubuntu/18.04/chef-workstation_0.4.2-1_amd64.deb
+
+
+
+
+
+apt-get update
+apt-get install -y ca-certificates
+update-ca-certificates
+
+
+wget --no-check-certificate https://packages.chef.io/files/stable/chef-workstation/0.4.2/ubuntu/18.04/chef-workstation_0.4.2-1_amd64.deb
+
+
+dpkg -i chef-workstation_0.4.2-1_amd64.deb
+
+
+
+
+
+curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P chef-workstation
+
+
+
+
+
+aws s3 cp /cookbooks/mubook s3://you.mylovetanu.live/mubook/ --recursive
