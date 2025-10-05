@@ -1,0 +1,378 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\Gaurav.26> cd downloads/repo/
+PS C:\Users\Gaurav.26\downloads\repo> cd .\Linux-mac\
+PS C:\Users\Gaurav.26\downloads\repo\Linux-mac>
+PS C:\Users\Gaurav.26\downloads\repo\Linux-mac> ssh -i id_rsa ec2-user@13.232.130.167
+The authenticity of host '13.232.130.167 (13.232.130.167)' can't be established.
+ED25519 key fingerprint is SHA256:NbGcebZzqLj2nQOWvEs212GFdvUSdwhOSRYEmgehVyo.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '13.232.130.167' (ED25519) to the list of known hosts.
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+[ec2-user@ip-172-31-12-134 ~]$ sudo su
+[root@ip-172-31-12-134 ec2-user]# yum update -y
+Amazon Linux 2023 Kernel Livepatch repository                                           226 kB/s |  26 kB     00:00
+========================================================================================================================
+WARNING:
+  A newer release of "Amazon Linux" is available.
+
+  Available Versions:
+
+  Version 2023.8.20250908:
+    Run the following command to upgrade to 2023.8.20250908:
+
+      dnf upgrade --releasever=2023.8.20250908
+
+    Release notes:
+     https://docs.aws.amazon.com/linux/al2023/release-notes/relnotes-2023.8.20250908.html
+
+  Version 2023.8.20250915:
+    Run the following command to upgrade to 2023.8.20250915:
+
+      dnf upgrade --releasever=2023.8.20250915
+
+    Release notes:
+     https://docs.aws.amazon.com/linux/al2023/release-notes/relnotes-2023.8.20250915.html
+
+  Version 2023.9.20250929:
+    Run the following command to upgrade to 2023.9.20250929:
+
+      dnf upgrade --releasever=2023.9.20250929
+
+    Release notes:
+     https://docs.aws.amazon.com/linux/al2023/release-notes/relnotes-2023.9.20250929.html
+
+========================================================================================================================
+Dependencies resolved.
+Nothing to do.
+Complete!
+[root@ip-172-31-12-134 ec2-user]# https://packages.chef.io/files/stable/chef-workstation/0.4.2/el/7/chef-workstation-0.4.2-1.el6.x86_64.rpm
+bash: https://packages.chef.io/files/stable/chef-workstation/0.4.2/el/7/chef-workstation-0.4.2-1.el6.x86_64.rpm: No such file or directory
+[root@ip-172-31-12-134 ec2-user]# wget https://packages.chef.io/files/stable/chef-workstation/0.4.2/el/7/chef-workstation-0.4.2-1.el6.x86_64.rpm
+--2025-10-01 12:36:28--  https://packages.chef.io/files/stable/chef-workstation/0.4.2/el/7/chef-workstation-0.4.2-1.el6.x86_64.rpm
+Resolving packages.chef.io (packages.chef.io)... 151.101.209.55
+Connecting to packages.chef.io (packages.chef.io)|151.101.209.55|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 141455539 (135M) [application/x-rpm]
+Saving to: ‘chef-workstation-0.4.2-1.el6.x86_64.rpm’
+
+chef-workstation-0.4.2-1.el6. 100%[=================================================>] 134.90M  76.4MB/s    in 1.8s
+
+2025-10-01 12:36:31 (76.4 MB/s) - ‘chef-workstation-0.4.2-1.el6.x86_64.rpm’ saved [141455539/141455539]
+
+[root@ip-172-31-12-134 ec2-user]# yum install chef-workstation-0.4.2-1.el6.x86_64.rpm
+Last metadata expiration check: 0:01:33 ago on Wed Oct  1 12:35:24 2025.
+Dependencies resolved.
+========================================================================================================================
+ Package                          Architecture           Version                     Repository                    Size
+========================================================================================================================
+Installing:
+ chef-workstation                 x86_64                 0.4.2-1.el6                 @commandline                 135 M
+
+Transaction Summary
+========================================================================================================================
+Install  1 Package
+
+Total size: 135 M
+Installed size: 644 M
+Is this ok [y/N]: y
+Downloading Packages:
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                1/1
+  Running scriptlet: chef-workstation-0.4.2-1.el6.x86_64                                                            1/1
+  Installing       : chef-workstation-0.4.2-1.el6.x86_64                                                            1/1
+  Running scriptlet: chef-workstation-0.4.2-1.el6.x86_64                                                            1/1
+
+To run the experimental Chef Workstation App, use your
+platform's package manager to install these dependencies:
+
+        libgtk-3.so.0 => not found
+        libgdk-3.so.0 => not found
+        libpangocairo-1.0.so.0 => not found
+        libpango-1.0.so.0 => not found
+        libatk-1.0.so.0 => not found
+        libcairo.so.2 => not found
+        libgdk_pixbuf-2.0.so.0 => not found
+        libX11-xcb.so.1 => not found
+        libxcb.so.1 => not found
+        libXi.so.6 => not found
+        libXcursor.so.1 => not found
+        libXdamage.so.1 => not found
+        libXrandr.so.2 => not found
+        libXcomposite.so.1 => not found
+        libXext.so.6 => not found
+        libXfixes.so.3 => not found
+        libXrender.so.1 => not found
+        libX11.so.6 => not found
+        libXtst.so.6 => not found
+        libXss.so.1 => not found
+        libgconf-2.so.4 => not found
+        libasound.so.2 => not found
+        libcups.so.2 => not found
+        libfontconfig.so.1 => not found
+You can then launch the App by running 'chef-workstation-app'.
+The App will then be available in the system tray.
+
+Thank you for installing Chef Workstation!
+You can find some tips on getting started at https://chef.sh/
+
+
+  Verifying        : chef-workstation-0.4.2-1.el6.x86_64                                                            1/1
+========================================================================================================================
+WARNING:
+  A newer release of "Amazon Linux" is available.
+
+  Available Versions:
+
+  Version 2023.8.20250908:
+    Run the following command to upgrade to 2023.8.20250908:
+
+      dnf upgrade --releasever=2023.8.20250908
+
+    Release notes:
+     https://docs.aws.amazon.com/linux/al2023/release-notes/relnotes-2023.8.20250908.html
+
+  Version 2023.8.20250915:
+    Run the following command to upgrade to 2023.8.20250915:
+
+      dnf upgrade --releasever=2023.8.20250915
+
+    Release notes:
+     https://docs.aws.amazon.com/linux/al2023/release-notes/relnotes-2023.8.20250915.html
+
+  Version 2023.9.20250929:
+    Run the following command to upgrade to 2023.9.20250929:
+
+      dnf upgrade --releasever=2023.9.20250929
+
+    Release notes:
+     https://docs.aws.amazon.com/linux/al2023/release-notes/relnotes-2023.9.20250929.html
+
+========================================================================================================================
+
+Installed:
+  chef-workstation-0.4.2-1.el6.x86_64
+
+Complete!
+[root@ip-172-31-12-134 ec2-user]# chef -v
+/opt/chef-workstation/embedded/bin/ruby: error while loading shared libraries: libcrypt.so.1: cannot open shared objectfile: No such file or directory
+[root@ip-172-31-12-134 ec2-user]# yum install libxcrypt-compat
+Last metadata expiration check: 0:02:33 ago on Wed Oct  1 12:35:24 2025.
+Dependencies resolved.
+========================================================================================================================
+ Package                        Architecture         Version                            Repository                 Size
+========================================================================================================================
+Installing:
+ libxcrypt-compat               x86_64               4.4.33-7.amzn2023                  amazonlinux                92 k
+
+Transaction Summary
+========================================================================================================================
+Install  1 Package
+
+Total download size: 92 k
+Installed size: 198 k
+Is this ok [y/N]: y
+Downloading Packages:
+libxcrypt-compat-4.4.33-7.amzn2023.x86_64.rpm                                           2.5 MB/s |  92 kB     00:00
+------------------------------------------------------------------------------------------------------------------------
+Total                                                                                   1.4 MB/s |  92 kB     00:00
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                1/1
+  Installing       : libxcrypt-compat-4.4.33-7.amzn2023.x86_64                                                      1/1
+  Running scriptlet: libxcrypt-compat-4.4.33-7.amzn2023.x86_64                                                      1/1
+  Verifying        : libxcrypt-compat-4.4.33-7.amzn2023.x86_64                                                      1/1
+========================================================================================================================
+WARNING:
+  A newer release of "Amazon Linux" is available.
+
+  Available Versions:
+
+  Version 2023.8.20250908:
+    Run the following command to upgrade to 2023.8.20250908:
+
+      dnf upgrade --releasever=2023.8.20250908
+
+    Release notes:
+     https://docs.aws.amazon.com/linux/al2023/release-notes/relnotes-2023.8.20250908.html
+
+  Version 2023.8.20250915:
+    Run the following command to upgrade to 2023.8.20250915:
+
+      dnf upgrade --releasever=2023.8.20250915
+
+    Release notes:
+     https://docs.aws.amazon.com/linux/al2023/release-notes/relnotes-2023.8.20250915.html
+
+  Version 2023.9.20250929:
+    Run the following command to upgrade to 2023.9.20250929:
+
+      dnf upgrade --releasever=2023.9.20250929
+
+    Release notes:
+     https://docs.aws.amazon.com/linux/al2023/release-notes/relnotes-2023.9.20250929.html
+
+========================================================================================================================
+
+Installed:
+  libxcrypt-compat-4.4.33-7.amzn2023.x86_64
+
+Complete!
+[root@ip-172-31-12-134 ec2-user]# chef -v
+Chef Workstation: 0.4.2
+  chef-run: .chef-workstation/config.toml.
+  chef-client: 15.0.300
+  delivery-cli: 0.0.52 (9d07501a3b347cc687c902319d23dc32dd5fa621)
+  berks: 7.0.8
+  test-kitchen: 2.2.5
+  inspec: 4.3.2
+[root@ip-172-31-12-134 ec2-user]# curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P chef-workstation
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 23738  100 23738    0     0  27066      0 --:--:-- --:--:-- --:--:-- 27067
+amazon 2023 x86_64
+Getting information for chef-workstation stable  for amazon...
+downloading https://omnitruck.chef.io/stable/chef-workstation/metadata?v=&p=amazon&pv=2023&m=x86_64
+  to file /tmp/install.sh.3576/metadata.txt
+trying wget...
+sha1    b3106beca540b95f1238c3c49ace922285118ee8
+sha256  400e63706e26951bfcbd22cb459f47a71a632a9033d1c1f5bdbd8a798f0f1912
+url     https://packages.chef.io/files/stable/chef-workstation/25.9.1094/amazon/2023/chef-workstation-25.9.1094-1.amazon2023.x86_64.rpm
+version 25.9.1094
+downloaded metadata file looks valid...
+downloading https://packages.chef.io/files/stable/chef-workstation/25.9.1094/amazon/2023/chef-workstation-25.9.1094-1.amazon2023.x86_64.rpm
+  to file /tmp/install.sh.3576/chef-workstation-25.9.1094-1.amazon2023.x86_64.rpm
+trying wget...
+Comparing checksum with sha256sum...
+
+WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING
+
+You are installing a package without a version pin.  If you are installing
+on production servers via an automated process this is DANGEROUS and you will
+be upgraded without warning on new releases, even to new major releases.
+Letting the version float is only appropriate in test, development or
+CI/CD environments.
+
+WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING
+
+Installing chef-workstation
+installing with rpm...
+warning: /tmp/install.sh.3576/chef-workstation-25.9.1094-1.amazon2023.x86_64.rpm: Header V4 DSA/SHA256 Signature, key ID 83ef826a: NOKEY
+Verifying...                          ################################# [100%]
+Preparing...                          ################################# [100%]
+Updating / installing...
+   1:chef-workstation-25.9.1094-1.amaz################################# [ 50%]
+
+Chef Workstation ships with a toolbar application, the Chef Workstation App.
+To run this application some additional dependencies must be installed.
+Using your platform's package manager to install the 'electron' package is
+the easiest way to meet the dependency requirements.
+
+You can then launch the App by running 'chef-workstation-app'.
+The App will then be available in the system tray.
+
+Thank you for installing Chef Workstation!
+You can find some tips on getting started at https://docs.chef.io/workstation/getting_started/
+
+Cleaning up / removing...
+   2:chef-workstation-0.4.2-1.el6     ################################# [100%]
+[root@ip-172-31-12-134 ec2-user]# history
+    1  yum update -y
+    2  https://packages.chef.io/files/stable/chef-workstation/0.4.2/el/7/chef-workstation-0.4.2-1.el6.x86_64.rpm
+    3  wget https://packages.chef.io/files/stable/chef-workstation/0.4.2/el/7/chef-workstation-0.4.2-1.el6.x86_64.rpm
+    4  yum install chef-workstation-0.4.2-1.el6.x86_64.rpm
+    5  chef -v
+    6  yum install libxcrypt-compat
+    7  chef -v
+    8  curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P chef-workstation
+    9  history
+[root@ip-172-31-12-134 ec2-user]#
+Broadcast message from root@localhost (Wed 2025-10-01 12:45:56 UTC):
+
+The system will power off now!
+
+
+Broadcast message from root@localhost (Wed 2025-10-01 12:45:56 UTC):
+
+The system will power off now!
+
+Connection to 13.232.130.167 closed by remote host.
+Connection to 13.232.130.167 closed.
+PS C:\Users\Gaurav.26\downloads\repo\Linux-mac> ^C
+PS C:\Users\Gaurav.26\downloads\repo\Linux-mac>
+PS C:\Users\Gaurav.26\downloads\repo\Linux-mac> ssh -i id_rsa ec2-user@65.1.94.212
+The authenticity of host '65.1.94.212 (65.1.94.212)' can't be established.
+ED25519 key fingerprint is SHA256:MPMRFawSWpvVSdUfJMAKMl3KTXH5t9WhEYjcE/dXLgI.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '65.1.94.212' (ED25519) to the list of known hosts.
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+[ec2-user@ip-172-31-0-97 ~]$ sudo su
+[root@ip-172-31-0-97 ec2-user]# chef -v
+
+Chef Workstation version: 25.9.1094
+Chef Infra Client version: 18.8.11
+Chef InSpec version: 5.22.95
+Chef CLI version: 5.6.21
+Chef Habitat version: 1.6.1243
+Test Kitchen version: 3.9.0
+Cookstyle version: 7.32.8
+[root@ip-172-31-0-97 ec2-user]# mkdir cookbooks
+[root@ip-172-31-0-97 ec2-user]# cd cookbooks
+[root@ip-172-31-0-97 cookbooks]# cd ..
+[root@ip-172-31-0-97 ec2-user]# ls
+chef-repo  cookbooks
+[root@ip-172-31-0-97 ec2-user]# cd chef-repo
+[root@ip-172-31-0-97 chef-repo]# ls
+README.md  cookbooks  roles
+[root@ip-172-31-0-97 chef-repo]# ls -a
+.  ..  .chef  .gitignore  README.md  cookbooks  roles
+[root@ip-172-31-0-97 chef-repo]# cd .chef
+[root@ip-172-31-0-97 .chef]# ls
+config.rb  gaura1089.pem
+[root@ip-172-31-0-97 .chef]# ls
+config.rb  gaura1089.pem
+[root@ip-172-31-0-97 .chef]# cat config.rb
+# See https://docs.chef.io/workstation/config_rb/ for more information on knife configuration options
+
+current_dir = File.dirname(__FILE__)
+log_level                :info
+log_location             STDOUT
+node_name                "gaura1089"
+client_key               "#{current_dir}/gaura1089.pem"
+chef_server_url          "https://api.chef.io/organizations/madhusudan1089"
+cookbook_path            ["#{current_dir}/../cookbooks"]
+[root@ip-172-31-0-97 .chef]# knife ssl check
+INFO: Using configuration from /home/ec2-user/chef-repo/.chef/config.rb
+Connecting to host api.chef.io:443
+Successfully verified certificates from `api.chef.io'
+[root@ip-172-31-0-97 .chef]# ec2-65-1-94-212.ap-south-1.compute.amazonaws.com

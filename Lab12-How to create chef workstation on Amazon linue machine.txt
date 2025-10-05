@@ -1,0 +1,94 @@
+yum update -y
+wget https://packages.chef.io/files/stable/chef-workstation/0.4.2/el/7/chef-workstation-0.4.2-1.el6.x86_64.rpm
+yum install chef-workstation-0.4.2-1.el6.x86_64.rpm -y
+yum install libxcrypt-compat -y
+curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P chef-workstation
+
+
+=====================
+
+
+
+knife ssl fetech
+knife ssl check ( To establish connection between workstation to chef-server )
+
+==============================
+
+knife bootstrap 172.31.13.34 -N mynode --ssh-user ec2-user --ssh-identity-file nodekey1.pem --sudo -VV  ( To establish connection between chef-server to node )
+
+===============================================
+
+create recipe in workstation:-
+
+
+#
+# Cookbook:: apache-book
+# Recipe:: apache-recipe
+#
+
+# Update the system packages
+execute 'yum_update' do
+  command 'yum update -y'
+  action :run
+end
+
+# Install Apache (httpd)
+package 'httpd' do
+  action :install
+end
+
+# Enable and start the Apache service
+service 'httpd' do
+  action [:enable, :start]
+end
+
+# Create a custom homepage
+file '/var/www/html/index.html' do
+  content <<-HTML
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>Welcome to Apache on Amazon Linux!</title>
+      <style>
+        body {
+          background-color: #eef;
+          font-family: 'Segoe UI', sans-serif;
+          text-align: center;
+          padding-top: 60px;
+        }
+        h1 {
+          color: #2c3e50;
+          font-size: 48px;
+        }
+        p {
+          color: #34495e;
+          font-size: 20px;
+        }
+        .footer {
+          margin-top: 40px;
+          font-size: 14px;
+          color: #7f8c8d;
+        }
+      </style>
+    </head>
+    <body>
+      <h1>🚀 Apache Server is Running!</h1>
+      <p>Amazon Linux | Managed by Chef</p>
+      <div class="footer">© 2025 Coforge Ltd.</div>
+    </body>
+    </html>
+  HTML
+  mode '0644'
+  owner 'root'
+  group 'root'
+end
+
+===================================================
+
+Upload recipe in chef-server:- 
+
+knife cookbook upload apache
+
+knife node run_list add newnode 'recipe[apache]'
+
+

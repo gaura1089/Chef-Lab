@@ -1,0 +1,97 @@
+[root@ip-172-31-1-132 apache-book]# history
+    1  chef -v
+    2  knife ssl fetch
+    3  knife ssl check
+    4  knife ssl check
+    5  ls
+    6  cd chef-repo/
+    7  ls
+    8  ls -a
+    9  cd .chef/
+   10  ls
+   11  kinfe ssl fetch
+   12  knife sssl fetch
+   13  knife ssl fetch
+   14  knife ssl check
+   15  cd ..
+   16  ls
+   17  ls
+   18  rm -rf id_rsa.ppk
+   19  ls
+   20   knife bootstrap 172.31.5.50 -N mynode --ssh-user ec2-user --ssh-identity-file id_rsa --sudo -VV
+   21   knife bootstrap 172.31.5.50 -N mynode --ssh-user ec2-user --ssh-identity-file id_rsa.pem --sudo -VV
+   22  cd ..
+   23  ls
+   24  cd chef-repo/
+   25  ls
+   26  ls
+   27  rm -rf id_rsa
+   28   knife bootstrap 172.31.5.50 -N mynode --ssh-user ec2-user --ssh-identity-file key.pem --sudo -VV
+   29  knife bootstrap 172.31.5.50 -N mynode --ssh-user ec2-user --ssh-identity-file key.pem --sudo -VV
+   30  ls
+   31  cd cookbooks/
+   32  ls
+   33  chef generate cookbook apache-book
+   34  cd apache-book/
+   35  ls
+   36  chef generate recipe apache-recipe
+   37  vi recipes/apache-recipe.rb
+   38  cd ..
+   39  cd ..
+   40  knife cookbook upload apache-book
+   41  knife node run_list add mynode 'recipe[apache-recipe]'
+   42  ls
+   43  cd cookbooks
+   44  ls
+   45  cd apache-book/
+   46  ls
+   47  vi recipes/apache-recipe.rb
+   48  ls
+   49  apt-get update -y
+   50  yum install tree -y
+   51  tree
+   52  cd ..
+   53  tree
+   54  knife node run_list add mynode 'recipe[apache-book::apache-recipe]'
+   55  knife cookbook upload apache-book
+   56  ls
+   57  cd apache-book/
+   58  vi recipes/apache-recipe.rb
+   59  cd ..
+   60  cd ..
+   61  knife node run_list add mynode 'recipe[apache-book::apache-recipe]'
+   62  knife cookbook upload apache-cookbook
+   63  cd cookbooks/
+   64  ls
+   65  knife cookbook upload apache-cookbook
+   66  knife cookbook upload apache-book
+   67  ls
+   68  cd apache-book/
+   69  ls
+   70  tree
+   71  chef generate recipe time-sch.rb
+   72* vi recipes/time-sch
+   73  tree
+   74  chef generate recipe time-sch
+   75  tree
+   76  rm -rf recipes/time-sch.rb.rb
+   77  vi recipes/time-sch.rb
+   78  cd ..
+   79  cd ..
+   80  knife cookbook upload apache-book
+   81  knife node run_list add mynode 'recipe[apache-book::time-sch]'
+   82  cd cookbooks
+   83  ls
+   84  cd apache-book/
+   85  vi recipes/time-sch.rb
+   86  cd ..
+   87  cd ..
+   88  knife cookbook upload apache-book
+   89  knife node run_list add mynode 'recipe[apache-book::time-sch]'
+   90  cd cookbooks
+   91  ls
+   92  cd apache-book/
+   93  vi recipes/apache-recipe.rb
+   94  knife cookbook upload apache-book
+   95  knife node run_list add mynode 'recipe[apache-book::apache-recipe]'
+   96  history

@@ -1,0 +1,633 @@
+
+C:\Users\Gaurav.26\Downloads\repo\Linux-mac>ssh -i id_rsa ec2-user@13.201.137.102
+The authenticity of host '13.201.137.102 (13.201.137.102)' can't be established.
+ED25519 key fingerprint is SHA256:h3yaznOBqs4Q7Xj20Eq3UnV0dDB9tdkuOBLBXlKxS3Q.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '13.201.137.102' (ED25519) to the list of known hosts.
+
+A newer release of "Amazon Linux" is available.
+  Version 2023.8.20250908:
+  Version 2023.8.20250915:
+  Version 2023.9.20250929:
+Run "/usr/bin/dnf check-release-update" for full release and version update info
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+[ec2-user@ip-172-31-5-50 ~]$ sudo su
+[root@ip-172-31-5-50 ec2-user]# chef-client
+Chef Infra Client, version 18.8.11
+Patents: https://www.chef.io/patents
+Infra Phase starting
+[2025-10-05T07:38:51+00:00] ERROR: shard_seed: Failed to get dmi property serial_number: is dmidecode installed?
+Resolving cookbooks for run list: ["apache-recipe"]
+
+================================================================================
+Error Resolving Cookbooks for Run List:
+================================================================================
+
+Missing Cookbooks:
+------------------
+The following cookbooks are required by the client but don't exist on the server:
+* apache-recipe
+
+
+Expanded Run List:
+------------------
+* apache-recipe
+
+System Info:
+------------
+chef_version=18.8.11
+platform=amazon
+platform_version=2023
+ruby=ruby 3.1.7p261 (2025-03-26 revision 0a3704f218) [x86_64-linux]
+program_name=/usr/bin/chef-client
+executable=/opt/chef/bin/chef-client
+
+
+Running handlers:
+[2025-10-05T07:38:52+00:00] ERROR: Running exception handlers
+Running handlers complete
+[2025-10-05T07:38:52+00:00] ERROR: Exception handlers complete
+Infra Phase failed. 0 resources updated in 01 seconds
+[2025-10-05T07:38:52+00:00] FATAL: Stacktrace dumped to /var/chef/cache/chef-stacktrace.out
+[2025-10-05T07:38:52+00:00] FATAL: ---------------------------------------------------------------------------------------
+[2025-10-05T07:38:52+00:00] FATAL: PLEASE PROVIDE THE CONTENTS OF THE stacktrace.out FILE (above) IF YOU FILE A BUG REPORT
+[2025-10-05T07:38:52+00:00] FATAL: ---------------------------------------------------------------------------------------
+[2025-10-05T07:38:52+00:00] FATAL: Net::HTTPClientException: 412 "Precondition Failed"
+[root@ip-172-31-5-50 ec2-user]# exit
+exit
+[ec2-user@ip-172-31-5-50 ~]$ chef-client
+[2025-10-05T07:39:18+00:00] FATAL: Errno::EACCES: Permission denied @ rb_sysopen - /var/chef/cache/chef-client-running.pid
+[ec2-user@ip-172-31-5-50 ~]$ sudo su
+[root@ip-172-31-5-50 ec2-user]# chef-client
+Chef Infra Client, version 18.8.11
+Patents: https://www.chef.io/patents
+Infra Phase starting
+[2025-10-05T07:39:32+00:00] ERROR: shard_seed: Failed to get dmi property serial_number: is dmidecode installed?
+Resolving cookbooks for run list: ["apache-recipe"]
+
+================================================================================
+Error Resolving Cookbooks for Run List:
+================================================================================
+
+Missing Cookbooks:
+------------------
+The following cookbooks are required by the client but don't exist on the server:
+* apache-recipe
+
+
+Expanded Run List:
+------------------
+* apache-recipe
+
+System Info:
+------------
+chef_version=18.8.11
+platform=amazon
+platform_version=2023
+ruby=ruby 3.1.7p261 (2025-03-26 revision 0a3704f218) [x86_64-linux]
+program_name=/usr/bin/chef-client
+executable=/opt/chef/bin/chef-client
+
+
+Running handlers:
+[2025-10-05T07:39:32+00:00] ERROR: Running exception handlers
+Running handlers complete
+[2025-10-05T07:39:32+00:00] ERROR: Exception handlers complete
+Infra Phase failed. 0 resources updated in 01 seconds
+[2025-10-05T07:39:33+00:00] FATAL: Stacktrace dumped to /var/chef/cache/chef-stacktrace.out
+[2025-10-05T07:39:33+00:00] FATAL: ---------------------------------------------------------------------------------------
+[2025-10-05T07:39:33+00:00] FATAL: PLEASE PROVIDE THE CONTENTS OF THE stacktrace.out FILE (above) IF YOU FILE A BUG REPORT
+[2025-10-05T07:39:33+00:00] FATAL: ---------------------------------------------------------------------------------------
+[2025-10-05T07:39:33+00:00] FATAL: Net::HTTPClientException: 412 "Precondition Failed"
+[root@ip-172-31-5-50 ec2-user]# ls
+[root@ip-172-31-5-50 ec2-user]# ls
+[root@ip-172-31-5-50 ec2-user]# cd ..
+[root@ip-172-31-5-50 home]# ls
+ec2-user
+[root@ip-172-31-5-50 home]# cd etc
+bash: cd: etc: No such file or directory
+[root@ip-172-31-5-50 home]# \
+>
+exit
+[ec2-user@ip-172-31-5-50 ~]$ ls
+[ec2-user@ip-172-31-5-50 ~]$ sudo su
+[root@ip-172-31-5-50 ec2-user]# ls
+[root@ip-172-31-5-50 ec2-user]# pwd
+/home/ec2-user
+[root@ip-172-31-5-50 ec2-user]# cd ../..
+[root@ip-172-31-5-50 /]# ls
+bin  boot  dev  etc  home  lib  lib64  local  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+[root@ip-172-31-5-50 /]# cd var/
+[root@ip-172-31-5-50 var]# ls
+account  adm  cache  chef  db  empty  ftp  games  kerberos  lib  local  lock  log  mail  nis  opt  preserve  run  spool  tmp  yp
+[root@ip-172-31-5-50 var]# cd ..
+[root@ip-172-31-5-50 /]# chef-client
+Chef Infra Client, version 18.8.11
+Patents: https://www.chef.io/patents
+Infra Phase starting
+[2025-10-05T07:43:50+00:00] ERROR: shard_seed: Failed to get dmi property serial_number: is dmidecode installed?
+Resolving cookbooks for run list: ["apache-recipe"]
+
+================================================================================
+Error Resolving Cookbooks for Run List:
+================================================================================
+
+Missing Cookbooks:
+------------------
+The following cookbooks are required by the client but don't exist on the server:
+* apache-recipe
+
+
+Expanded Run List:
+------------------
+* apache-recipe
+
+System Info:
+------------
+chef_version=18.8.11
+platform=amazon
+platform_version=2023
+ruby=ruby 3.1.7p261 (2025-03-26 revision 0a3704f218) [x86_64-linux]
+program_name=/usr/bin/chef-client
+executable=/opt/chef/bin/chef-client
+
+
+Running handlers:
+[2025-10-05T07:43:50+00:00] ERROR: Running exception handlers
+Running handlers complete
+[2025-10-05T07:43:50+00:00] ERROR: Exception handlers complete
+Infra Phase failed. 0 resources updated in 01 seconds
+[2025-10-05T07:43:50+00:00] FATAL: Stacktrace dumped to /var/chef/cache/chef-stacktrace.out
+[2025-10-05T07:43:50+00:00] FATAL: ---------------------------------------------------------------------------------------
+[2025-10-05T07:43:50+00:00] FATAL: PLEASE PROVIDE THE CONTENTS OF THE stacktrace.out FILE (above) IF YOU FILE A BUG REPORT
+[2025-10-05T07:43:50+00:00] FATAL: ---------------------------------------------------------------------------------------
+[2025-10-05T07:43:50+00:00] FATAL: Net::HTTPClientException: 412 "Precondition Failed"
+[root@ip-172-31-5-50 /]# chef-client
+Chef Infra Client, version 18.8.11
+Patents: https://www.chef.io/patents
+Infra Phase starting
+[2025-10-05T07:51:37+00:00] ERROR: shard_seed: Failed to get dmi property serial_number: is dmidecode installed?
+Resolving cookbooks for run list: ["apache-recipe", "apache-book::apache-recipe"]
+
+================================================================================
+Error Resolving Cookbooks for Run List:
+================================================================================
+
+Missing Cookbooks:
+------------------
+The following cookbooks are required by the client but don't exist on the server:
+* apache-recipe
+
+
+Expanded Run List:
+------------------
+* apache-recipe
+* apache-book::apache-recipe
+
+System Info:
+------------
+chef_version=18.8.11
+platform=amazon
+platform_version=2023
+ruby=ruby 3.1.7p261 (2025-03-26 revision 0a3704f218) [x86_64-linux]
+program_name=/usr/bin/chef-client
+executable=/opt/chef/bin/chef-client
+
+
+Running handlers:
+[2025-10-05T07:51:37+00:00] ERROR: Running exception handlers
+Running handlers complete
+[2025-10-05T07:51:37+00:00] ERROR: Exception handlers complete
+Infra Phase failed. 0 resources updated in 01 seconds
+[2025-10-05T07:51:38+00:00] FATAL: Stacktrace dumped to /var/chef/cache/chef-stacktrace.out
+[2025-10-05T07:51:38+00:00] FATAL: ---------------------------------------------------------------------------------------
+[2025-10-05T07:51:38+00:00] FATAL: PLEASE PROVIDE THE CONTENTS OF THE stacktrace.out FILE (above) IF YOU FILE A BUG REPORT
+[2025-10-05T07:51:38+00:00] FATAL: ---------------------------------------------------------------------------------------
+[2025-10-05T07:51:38+00:00] FATAL: Net::HTTPClientException: 412 "Precondition Failed"
+[root@ip-172-31-5-50 /]# pwd
+/
+[root@ip-172-31-5-50 /]# cd home
+[root@ip-172-31-5-50 home]# cd ec2-user/
+[root@ip-172-31-5-50 ec2-user]# ls
+[root@ip-172-31-5-50 ec2-user]# chef-client
+Chef Infra Client, version 18.8.11
+Patents: https://www.chef.io/patents
+Infra Phase starting
+[2025-10-05T07:52:50+00:00] ERROR: shard_seed: Failed to get dmi property serial_number: is dmidecode installed?
+Resolving cookbooks for run list: ["apache-recipe", "apache-book::apache-recipe"]
+
+================================================================================
+Error Resolving Cookbooks for Run List:
+================================================================================
+
+Missing Cookbooks:
+------------------
+The following cookbooks are required by the client but don't exist on the server:
+* apache-recipe
+
+
+Expanded Run List:
+------------------
+* apache-recipe
+* apache-book::apache-recipe
+
+System Info:
+------------
+chef_version=18.8.11
+platform=amazon
+platform_version=2023
+ruby=ruby 3.1.7p261 (2025-03-26 revision 0a3704f218) [x86_64-linux]
+program_name=/usr/bin/chef-client
+executable=/opt/chef/bin/chef-client
+
+
+Running handlers:
+[2025-10-05T07:52:50+00:00] ERROR: Running exception handlers
+Running handlers complete
+[2025-10-05T07:52:50+00:00] ERROR: Exception handlers complete
+Infra Phase failed. 0 resources updated in 01 seconds
+[2025-10-05T07:52:51+00:00] FATAL: Stacktrace dumped to /var/chef/cache/chef-stacktrace.out
+[2025-10-05T07:52:51+00:00] FATAL: ---------------------------------------------------------------------------------------
+[2025-10-05T07:52:51+00:00] FATAL: PLEASE PROVIDE THE CONTENTS OF THE stacktrace.out FILE (above) IF YOU FILE A BUG REPORT
+[2025-10-05T07:52:51+00:00] FATAL: ---------------------------------------------------------------------------------------
+[2025-10-05T07:52:51+00:00] FATAL: Net::HTTPClientException: 412 "Precondition Failed"
+[root@ip-172-31-5-50 ec2-user]# chef-client
+Chef Infra Client, version 18.8.11
+Patents: https://www.chef.io/patents
+Infra Phase starting
+[2025-10-05T07:53:40+00:00] ERROR: shard_seed: Failed to get dmi property serial_number: is dmidecode installed?
+Resolving cookbooks for run list: ["apache-book::apache-recipe"]
+Synchronizing cookbooks:
+  - apache-book (0.1.0)
+Installing cookbook gem dependencies:
+Compiling cookbooks...
+Loading Chef InSpec profile files:
+Loading Chef InSpec input files:
+Loading Chef InSpec waiver files:
+Converging 4 resources
+Recipe: apache-book::apache-recipe
+  * execute[apt_update] action run
+
+    ================================================================================
+    Error executing action `run` on resource 'execute[apt_update]'
+    ================================================================================
+
+    Errno::ENOENT
+    -------------
+    No such file or directory - apt
+
+    Resource Declaration:
+    ---------------------
+    # In /var/chef/cache/cookbooks/apache-book/recipes/apache-recipe.rb
+
+     38: execute 'apt_update' do
+     39:   command 'apt update -y'
+     40:   action :run
+     41: end
+     42:
+
+    Compiled Resource:
+    ------------------
+    # Declared in /var/chef/cache/cookbooks/apache-book/recipes/apache-recipe.rb:38:in `from_file'
+
+    execute("apt_update") do
+      action [:run]
+      default_guard_interpreter :execute
+      command "apt update -y"
+      declared_type :execute
+      cookbook_name "apache-book"
+      recipe_name "apache-recipe"
+    end
+
+    System Info:
+    ------------
+    chef_version=18.8.11
+    platform=amazon
+    platform_version=2023
+    ruby=ruby 3.1.7p261 (2025-03-26 revision 0a3704f218) [x86_64-linux]
+    program_name=/usr/bin/chef-client
+    executable=/opt/chef/bin/chef-client
+
+
+Running handlers:
+[2025-10-05T07:53:41+00:00] ERROR: Running exception handlers
+Running handlers complete
+[2025-10-05T07:53:41+00:00] ERROR: Exception handlers complete
+Infra Phase failed. 0 resources updated in 02 seconds
+[2025-10-05T07:53:41+00:00] FATAL: Stacktrace dumped to /var/chef/cache/chef-stacktrace.out
+[2025-10-05T07:53:41+00:00] FATAL: ---------------------------------------------------------------------------------------
+[2025-10-05T07:53:41+00:00] FATAL: PLEASE PROVIDE THE CONTENTS OF THE stacktrace.out FILE (above) IF YOU FILE A BUG REPORT
+[2025-10-05T07:53:41+00:00] FATAL: ---------------------------------------------------------------------------------------
+[2025-10-05T07:53:41+00:00] FATAL: Errno::ENOENT: execute[apt_update] (apache-book::apache-recipe line 38) had an error: Errno::ENOENT: No such file or directory - apt
+[root@ip-172-31-5-50 ec2-user]# chef-client
+Chef Infra Client, version 18.8.11
+Patents: https://www.chef.io/patents
+Infra Phase starting
+[2025-10-05T08:00:43+00:00] ERROR: shard_seed: Failed to get dmi property serial_number: is dmidecode installed?
+Resolving cookbooks for run list: ["apache-book::apache-recipe"]
+Synchronizing cookbooks:
+  - apache-book (0.1.0)
+Installing cookbook gem dependencies:
+Compiling cookbooks...
+Loading Chef InSpec profile files:
+Loading Chef InSpec input files:
+Loading Chef InSpec waiver files:
+Converging 4 resources
+Recipe: apache-book::apache-recipe
+  * execute[yum_update] action run
+    - execute yum update -y
+  * dnf_package[httpd] action install
+    - install version 0:2.4.64-1.amzn2023.0.1.x86_64 of package httpd
+  * service[httpd] action enable
+    - enable service service[httpd]
+  * service[httpd] action start
+    - start service service[httpd]
+  * file[/var/www/html/index.html] action create
+    - create new file /var/www/html/index.html
+    - update content in file /var/www/html/index.html from none to b3450b
+    --- /var/www/html/index.html        2025-10-05 08:00:49.648622902 +0000
+    +++ /var/www/html/.chef-index20251005-5279-oeq8t2.html      2025-10-05 08:00:49.648622902 +0000
+    @@ -1,32 +1,64 @@
+    +    <!DOCTYPE html>
+    +    <html>
+    +    <head>
+    +      <title>Welcome to Apache on Amazon Linux!</title>
+    +      <style>
+    +        body {
+    +          background-color: #eef;
+    +          font-family: 'Segoe UI', sans-serif;
+    +          text-align: center;
+    +          padding-top: 60px;
+    +        }
+    +        h1 {
+    +          color: #2c3e50;
+    +          font-size: 48px;
+    +        }
+    +        p {
+    +          color: #34495e;
+    +          font-size: 20px;
+    +        }
+    +        .footer {
+    +          margin-top: 40px;
+    +          font-size: 14px;
+    +          color: #7f8c8d;
+    +        }
+    +      </style>
+    +    </head>
+    +    <body>
+    +      <h1>🚀 Apache Server is Running!</h1>
+    +      <p>Amazon Linux | Managed by Chef</p>
+    +      <div class="footer">© 2025 Coforge Ltd.</div>
+    +    </body>
+    +    </html>
+    - change mode from '' to '0644'
+    - change owner from '' to 'root'
+    - change group from '' to 'root'
+    - restore selinux security context
+
+Running handlers:
+Running handlers complete
+Infra Phase complete, 5/5 resources updated in 08 seconds
+[root@ip-172-31-5-50 ec2-user]# ls
+[root@ip-172-31-5-50 ec2-user]# cd ..
+[root@ip-172-31-5-50 home]# ls
+ec2-user
+[root@ip-172-31-5-50 home]# cd ..
+[root@ip-172-31-5-50 /]# ls
+bin  boot  dev  etc  home  lib  lib64  local  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+[root@ip-172-31-5-50 /]# cd var
+[root@ip-172-31-5-50 var]# ls
+account  adm  cache  chef  db  empty  ftp  games  kerberos  lib  local  lock  log  mail  nis  opt  preserve  run  spool  tmp  www  yp
+[root@ip-172-31-5-50 var]# cd www
+[root@ip-172-31-5-50 www]# ls
+cgi-bin  html
+[root@ip-172-31-5-50 www]# cd html
+[root@ip-172-31-5-50 html]# ls
+index.html
+[root@ip-172-31-5-50 html]# cat index.html
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>Welcome to Apache on Amazon Linux!</title>
+      <style>
+        body {
+          background-color: #eef;
+          font-family: 'Segoe UI', sans-serif;
+          text-align: center;
+          padding-top: 60px;
+        }
+        h1 {
+          color: #2c3e50;
+          font-size: 48px;
+        }
+        p {
+          color: #34495e;
+          font-size: 20px;
+        }
+        .footer {
+          margin-top: 40px;
+          font-size: 14px;
+          color: #7f8c8d;
+        }
+      </style>
+    </head>
+    <body>
+      <h1>🚀 Apache Server is Running!</h1>
+      <p>Amazon Linux | Managed by Chef</p>
+      <div class="footer">© 2025 Coforge Ltd.</div>
+    </body>
+    </html>
+[root@ip-172-31-5-50 html]# cd ../../..
+[root@ip-172-31-5-50 /]# ls
+bin  boot  dev  etc  home  lib  lib64  local  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+[root@ip-172-31-5-50 /]# chef-client
+Chef Infra Client, version 18.8.11
+Patents: https://www.chef.io/patents
+Infra Phase starting
+[2025-10-05T08:13:44+00:00] ERROR: shard_seed: Failed to get dmi property serial_number: is dmidecode installed?
+Resolving cookbooks for run list: ["apache-book::apache-recipe", "apache-book::time-sch"]
+Synchronizing cookbooks:
+  - apache-book (0.1.0)
+Installing cookbook gem dependencies:
+Compiling cookbooks...
+Loading Chef InSpec profile files:
+Loading Chef InSpec input files:
+Loading Chef InSpec waiver files:
+Converging 5 resources
+Recipe: apache-book::apache-recipe
+  * execute[yum_update] action run
+    - execute yum update -y
+  * dnf_package[httpd] action install (up to date)
+  * service[httpd] action enable (up to date)
+  * service[httpd] action start (up to date)
+  * file[/var/www/html/index.html] action create (up to date)
+Recipe: apache-book::time-sch
+  * cron[chef-client-run] action create
+
+    ================================================================================
+    Error executing action `create` on resource 'cron[chef-client-run]'
+    ================================================================================
+
+    Chef::Exceptions::Cron
+    ----------------------
+    Error determining state of chef-client-run, error: No such file or directory - crontab
+
+    Resource Declaration:
+    ---------------------
+    # In /var/chef/cache/cookbooks/apache-book/recipes/time-sch.rb
+
+     11: cron 'chef-client-run' do
+     12:   minute '*/30'
+     13:   command '/opt/chef/bin/chef-client'
+     14:   user 'root'
+     15: end
+
+    Compiled Resource:
+    ------------------
+    # Declared in /var/chef/cache/cookbooks/apache-book/recipes/time-sch.rb:11:in `from_file'
+
+    cron("chef-client-run") do
+      action [:create]
+      default_guard_interpreter :default
+      declared_type :cron
+      cookbook_name "apache-book"
+      recipe_name "time-sch"
+      minute "*/30"
+      command "/opt/chef/bin/chef-client"
+      user "root"
+    end
+
+    System Info:
+    ------------
+    chef_version=18.8.11
+    platform=amazon
+    platform_version=2023
+    ruby=ruby 3.1.7p261 (2025-03-26 revision 0a3704f218) [x86_64-linux]
+    program_name=/usr/bin/chef-client
+    executable=/opt/chef/bin/chef-client
+
+
+Running handlers:
+[2025-10-05T08:13:46+00:00] ERROR: Running exception handlers
+Running handlers complete
+[2025-10-05T08:13:46+00:00] ERROR: Exception handlers complete
+Infra Phase failed. 1 resources updated in 03 seconds
+[2025-10-05T08:13:46+00:00] FATAL: Stacktrace dumped to /var/chef/cache/chef-stacktrace.out
+[2025-10-05T08:13:46+00:00] FATAL: ---------------------------------------------------------------------------------------
+[2025-10-05T08:13:46+00:00] FATAL: PLEASE PROVIDE THE CONTENTS OF THE stacktrace.out FILE (above) IF YOU FILE A BUG REPORT
+[2025-10-05T08:13:46+00:00] FATAL: ---------------------------------------------------------------------------------------
+[2025-10-05T08:13:46+00:00] FATAL: Chef::Exceptions::Cron: cron[chef-client-run] (apache-book::time-sch line 11) had an error: Chef::Exceptions::Cron: Error determining state of chef-client-run, error: No such file or directory - crontab
+[root@ip-172-31-5-50 /]# chef-client
+Chef Infra Client, version 18.8.11
+Patents: https://www.chef.io/patents
+Infra Phase starting
+[2025-10-05T08:15:17+00:00] ERROR: shard_seed: Failed to get dmi property serial_number: is dmidecode installed?
+Resolving cookbooks for run list: ["apache-book::time-sch", "apache-book::apache-recipe"]
+Synchronizing cookbooks:
+  - apache-book (0.1.0)
+Installing cookbook gem dependencies:
+Compiling cookbooks...
+Loading Chef InSpec profile files:
+Loading Chef InSpec input files:
+Loading Chef InSpec waiver files:
+Converging 5 resources
+Recipe: apache-book::time-sch
+  * cron[chef-client-run] action create
+
+    ================================================================================
+    Error executing action `create` on resource 'cron[chef-client-run]'
+    ================================================================================
+
+    Chef::Exceptions::Cron
+    ----------------------
+    Error determining state of chef-client-run, error: No such file or directory - crontab
+
+    Resource Declaration:
+    ---------------------
+    # In /var/chef/cache/cookbooks/apache-book/recipes/time-sch.rb
+
+     11: cron 'chef-client-run' do
+     12:   minute '*/30'
+     13:   command '/opt/chef/bin/chef-client'
+     14:   user 'root'
+     15: end
+
+    Compiled Resource:
+    ------------------
+    # Declared in /var/chef/cache/cookbooks/apache-book/recipes/time-sch.rb:11:in `from_file'
+
+    cron("chef-client-run") do
+      action [:create]
+      default_guard_interpreter :default
+      declared_type :cron
+      cookbook_name "apache-book"
+      recipe_name "time-sch"
+      minute "*/30"
+      command "/opt/chef/bin/chef-client"
+      user "root"
+    end
+
+    System Info:
+    ------------
+    chef_version=18.8.11
+    platform=amazon
+    platform_version=2023
+    ruby=ruby 3.1.7p261 (2025-03-26 revision 0a3704f218) [x86_64-linux]
+    program_name=/usr/bin/chef-client
+    executable=/opt/chef/bin/chef-client
+
+
+Running handlers:
+[2025-10-05T08:15:18+00:00] ERROR: Running exception handlers
+Running handlers complete
+[2025-10-05T08:15:18+00:00] ERROR: Exception handlers complete
+Infra Phase failed. 0 resources updated in 02 seconds
+[2025-10-05T08:15:18+00:00] FATAL: Stacktrace dumped to /var/chef/cache/chef-stacktrace.out
+[2025-10-05T08:15:18+00:00] FATAL: ---------------------------------------------------------------------------------------
+[2025-10-05T08:15:18+00:00] FATAL: PLEASE PROVIDE THE CONTENTS OF THE stacktrace.out FILE (above) IF YOU FILE A BUG REPORT
+[2025-10-05T08:15:18+00:00] FATAL: ---------------------------------------------------------------------------------------
+[2025-10-05T08:15:18+00:00] FATAL: Chef::Exceptions::Cron: cron[chef-client-run] (apache-book::time-sch line 11) had an error: Chef::Exceptions::Cron: Error determining state of chef-client-run, error: No such file or directory - crontab
+[root@ip-172-31-5-50 /]# chef-client
+Chef Infra Client, version 18.8.11
+Patents: https://www.chef.io/patents
+Infra Phase starting
+[2025-10-05T08:20:45+00:00] ERROR: shard_seed: Failed to get dmi property serial_number: is dmidecode installed?
+Resolving cookbooks for run list: ["apache-book::time-sch", "apache-book::apache-recipe"]
+Synchronizing cookbooks:
+  - apache-book (0.1.0)
+Installing cookbook gem dependencies:
+Compiling cookbooks...
+Loading Chef InSpec profile files:
+Loading Chef InSpec input files:
+Loading Chef InSpec waiver files:
+Converging 7 resources
+Recipe: apache-book::time-sch
+  * dnf_package[cronie] action install
+    - install version 0:1.5.7-1.amzn2023.0.2.x86_64 of package cronie
+  * service[crond] action enable (up to date)
+  * service[crond] action start
+    - start service service[crond]
+  * cron[chef-client-run] action create
+    - add crontab entry for cron[chef-client-run]
+Recipe: apache-book::apache-recipe
+  * execute[yum_update] action run
+    - execute yum update -y
+  * dnf_package[httpd] action install (up to date)
+  * service[httpd] action enable (up to date)
+  * service[httpd] action start (up to date)
+  * file[/var/www/html/index.html] action create (up to date)
+
+Running handlers:
+Running handlers complete
+Infra Phase complete, 4/9 resources updated in 05 seconds
+[root@ip-172-31-5-50 /]#
