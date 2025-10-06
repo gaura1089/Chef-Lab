@@ -1,0 +1,242 @@
+[root@ip-172-31-8-220 chef-repo]# history
+    1  chef -v
+    2  ls
+    3  cd chef-repo/
+    4  cd .chef/
+    5  knife ssl fetch
+    6  knife ssl check
+    7  cd ..
+    8  ls
+    9  cd cookbooks/
+   10  ls
+   11  chef generate cookbook webserver
+   12  cd webserver/
+   13  chef generate recipe webserver
+   14  yum install tree -t
+   15  yum install tree -y
+   16  tree
+   17  vi recipes/webserver.rb
+   18  chef generate recipe autoupdate
+   19  vi automate.rb
+   20  tree
+   21  vi recipes/autoupdate.rb
+   22  tree
+   23  cd ..
+   24  cd ..
+   25  knife bootstrap 172.31.7.128 -N web-node --ssh-user ec2-user --ssh-identity-file id_rsa.pem --sudo -VV
+   26  cd ..
+   27  cd chef-repo/
+   28  ls
+   29  cd roles/
+   30  ls
+   31  vi webrole.rb
+   32  tree
+   33  cd ..
+   34  tree
+   35  cd roles/
+   36  ls
+   37  vi webrole.rb
+   38  cd ..
+   39  knife cookbook upload webserver
+   40  ls
+   41  cd roles
+   42  ls
+   43  cd ..
+   44  knife role form file roles/webrole.rb
+   45  knife role from file roles/webrole.rb
+   46  knife node list
+   47  knife node run_list add web-node "role[webrole]"
+   48  knife cookbook upload webserver
+   49  knife role from file roles/webrole.rb
+   50  knife bootstrap 172.31.7.128 -N web-node --ssh-user ec2-user --ssh-identity-file id_rsa.pem --sudo -VV
+   51  ls roles/webrole.rb
+   52  ls
+   53  cd roles
+   54  ls
+   55  cat webrole.rb
+   56  vi webrole.rb
+   57  cd ..
+   58  knife role from file roles/webrole
+   59  knife role from file roles/webrole.rb
+   60  knife cookbook upload webserver
+   61  knife node list
+   62  knife node run_list add web-node "role[webrole]"
+   63  cd cookbooks/
+   64  ls
+   65  tree
+   66  rm webserver/recipes/autoupdate.rb
+   67  tree
+   68  rm -rf webserver/recipes/autoupdate.rb
+   69  tree
+   70  cd ..
+   71  knife role from file roles/webrole
+   72  knife role from file roles/webrole.rb
+   73  knife node run_list add wed-node "role[webrole]"
+   74  knife node list
+   75  knife node run_list add wed-node "role[webrole]"
+   76  knife cookbook upload webserver
+   77  knife bootstrap 172.31.7.128 -N web-node --ssh-user ec2-user --ssh-identity-file id_rsa.pem --sudo -VV
+   78  knife node list"
+   79  knife node run_list add web-node "role[webrole]"
+   80  knife node delete web-node
+   81  knife client delete web-node
+   82  knife node list
+   83  ls
+   84  knife role delete webrole
+   85  knife role create webserver
+   86  ls
+   87  cd roles/
+   88  ls
+   89  ls
+   90  cd ..
+   91  knife role delete webrole.rb
+   92  ls
+   93  cd roles/
+   94  ls
+   95  knife role delete webrole.rb
+   96  cd ..
+   97  ls
+   98  cd .chef/
+   99  ls
+  100  knife role delete webrole.rb
+  101  cd ..
+  102  ls
+  103  cd roles/
+  104  ls
+  105  rm -rf webrole.rb
+  106  ls
+  107  cd ..
+  108  knife role create webserver.rb
+  109  knife role create webserver
+  110  EDITOR=vi knife role create webserver
+  111  cat webserver
+  112  ls
+  113  cd roles/
+  114  ls
+  115  ls -a
+  116  knife role list
+  117  ls
+  118  cat starter.rb
+  119  ls
+  120  cd ..
+  121  ls
+  122  knife role list
+  123  knife role delete web_role
+  124  knife role list
+  125  EDITOR=vi knife role create webserver
+  126  knife role delete  webserver
+  127  knife role list
+  128  tree
+  129  cd roles/
+  130  nano webserver.rb
+  131  ls
+  132  cat webserver.rb
+  133  vi webserver.rb
+  134  cd ..
+  135  knife node list
+  136  knife node list
+  137  cd chef-repo/
+  138  knife node list
+  139  tree
+  140  cd cookbooks/
+  141  ls
+  142  cd wb
+  143  cd webserver/
+  144  ls
+  145  vi recipes/webserver.rb
+  146  cd ..
+  147  cd ..
+  148  ls
+  149  cd roles/
+  150  ls
+  151  vi webserver.rb
+  152  vi webserver.rb
+  153  cd ..
+  154  knife role from file role/webserver.rb
+  155  knife role from file roles/webserver.rb
+  156  knife cookbook upload webserver
+  157  knife node lits
+  158  knife node list
+  159  knife node run_list add webnode "role[webserver]"
+  160  knife role show
+  161  knife role show list
+  162  knife role list
+  163  ls
+  164  cd cookbooks
+  165  ls
+  166  cd webserver/
+  167  tree
+  168  chef generate recipe autoupdate
+  169  vi recipes/autoupdate.rb
+  170  cd ..
+  171  cd ..
+  172  knife cookbook upload webserver
+  173  knife node run_list add webnode "role[webserver]"
+  174  cd ..
+  175  cd chef-repo/
+  176  cd cookbooks/
+  177  ls
+  178  cd webserver/
+  179  vi recipes/webserver.rb
+  180  cd ..
+  181  cd ..
+  182  knife node run_list add webnode "role[webserver]"
+  183  knife cookbook upload webserver
+  184  knife node run_list add webnode "role[webserver]"
+  185  ls
+  186  cd cookbooks/
+  187  ls
+  188  cd webserver/
+  189  ls
+  190  tree
+  191  chef generate recipe  software
+  192  tree
+  193  cd ..
+  194  cd ..
+  195  knife cookbook upload webserver
+  196  knife node run_list add webnode "role[webserver]"
+  197  knife role from file role/webserver.rb
+  198  knife role from file roles/webserver.rb
+  199  tree
+  200  vi cookbooks/webserver/recipes/software.rb
+  201  knife role from file roles/webserver.rb
+  202  knife node run_list add webnode "role[webserver]"
+  203  knife cookbook upload webserver
+  204  cd roles/
+  205  ls
+  206  vi webserver.rb
+  207  cd ..
+  208  knife cookbook upload webserver
+  209  knife node run_list add webnode "role[webserver]"
+  210  knife role from file roles/webserver.rb
+  211  cd roles/
+  212  ls
+  213  vi webserver.rb
+  214  knife role from file roles/webserver.rb
+  215  cd ..
+  216  knife role from file roles/webserver.rb
+  217  knife cookbook upload webserver
+  218  knife node run_list add webnode "role[webserver]"
+  219  cd chef-repo/
+  220  ls
+  221  co cookbooks/
+  222  cd cookbooks/
+  223  ls
+  224  cd webserver/
+  225*
+  226  tree
+  227  vi recipes/software.rb
+  228  cd ..
+  229  cd ..
+  230  knife cookbook upload webserver
+  231  knife role from file roles/webserver.rb
+  232  knife node run_list add webnode "role[webserver]"
+  233  vi cookbooks/webserver/recipes/webserver.rb
+  234  knife cookbook upload webserver
+  235  knife role from file roles/webserver.rb
+  236  knife role from file roles/webserver.rb
+  237  knife node run_list add webnode "role[webserver]"
+  238  knife node list
+  239  knife bootstrap 172.31.7.128 -N node2 --ssh-user ec2-user --ssh-identity-file id_rsa.pem --sudo -VV
+  240  knife node list
+  241  history
