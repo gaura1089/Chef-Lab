@@ -1,0 +1,400 @@
+
+C:\Users\Gaurav.26\Downloads\repo\Linux-mac>ssh -i id_rsa ec2-user@13.234.76.10
+The authenticity of host '13.234.76.10 (13.234.76.10)' can't be established.
+ED25519 key fingerprint is SHA256:CcD320D3XTYvqTu2qv4hfSKREhPrMoGgBZldSp1nGZc.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '13.234.76.10' (ED25519) to the list of known hosts.
+
+A newer release of "Amazon Linux" is available.
+  Version 2023.8.20250908:
+  Version 2023.8.20250915:
+  Version 2023.9.20250929:
+Run "/usr/bin/dnf check-release-update" for full release and version update info
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+[ec2-user@ip-172-31-7-17 ~]$ sudo su
+[root@ip-172-31-7-17 ec2-user]#
+[root@ip-172-31-7-17 ec2-user]#
+[root@ip-172-31-7-17 ec2-user]# chef-client
+Chef Infra Client, version 18.8.11
+Patents: https://www.chef.io/patents
+Infra Phase starting
+[2025-10-08T10:23:28+00:00] ERROR: shard_seed: Failed to get dmi property serial_number: is dmidecode installed?
+Resolving cookbooks for run list: ["webbook", "autobook"]
+
+================================================================================
+Error Resolving Cookbooks for Run List:
+================================================================================
+
+Missing Cookbooks:
+------------------
+The following cookbooks are required by the client but don't exist on the server:
+* autobook
+
+
+Expanded Run List:
+------------------
+* webbook
+* autobook
+
+System Info:
+------------
+chef_version=18.8.11
+platform=amazon
+platform_version=2023
+ruby=ruby 3.1.7p261 (2025-03-26 revision 0a3704f218) [x86_64-linux]
+program_name=/usr/bin/chef-client
+executable=/opt/chef/bin/chef-client
+
+
+Running handlers:
+[2025-10-08T10:23:28+00:00] ERROR: Running exception handlers
+Running handlers complete
+[2025-10-08T10:23:28+00:00] ERROR: Exception handlers complete
+Infra Phase failed. 0 resources updated in 01 seconds
+[2025-10-08T10:23:28+00:00] FATAL: Stacktrace dumped to /var/chef/cache/chef-stacktrace.out
+[2025-10-08T10:23:28+00:00] FATAL: ---------------------------------------------------------------------------------------
+[2025-10-08T10:23:28+00:00] FATAL: PLEASE PROVIDE THE CONTENTS OF THE stacktrace.out FILE (above) IF YOU FILE A BUG REPORT
+[2025-10-08T10:23:28+00:00] FATAL: ---------------------------------------------------------------------------------------
+[2025-10-08T10:23:28+00:00] FATAL: Net::HTTPClientException: 412 "Precondition Failed"
+[root@ip-172-31-7-17 ec2-user]# chef-client
+Chef Infra Client, version 18.8.11
+Patents: https://www.chef.io/patents
+Infra Phase starting
+[2025-10-08T10:23:47+00:00] ERROR: shard_seed: Failed to get dmi property serial_number: is dmidecode installed?
+Resolving cookbooks for run list: ["webbook", "autobook"]
+
+================================================================================
+Error Resolving Cookbooks for Run List:
+================================================================================
+
+Missing Cookbooks:
+------------------
+The following cookbooks are required by the client but don't exist on the server:
+* autobook
+
+
+Expanded Run List:
+------------------
+* webbook
+* autobook
+
+System Info:
+------------
+chef_version=18.8.11
+platform=amazon
+platform_version=2023
+ruby=ruby 3.1.7p261 (2025-03-26 revision 0a3704f218) [x86_64-linux]
+program_name=/usr/bin/chef-client
+executable=/opt/chef/bin/chef-client
+
+
+Running handlers:
+[2025-10-08T10:23:47+00:00] ERROR: Running exception handlers
+Running handlers complete
+[2025-10-08T10:23:47+00:00] ERROR: Exception handlers complete
+Infra Phase failed. 0 resources updated in 01 seconds
+[2025-10-08T10:23:48+00:00] FATAL: Stacktrace dumped to /var/chef/cache/chef-stacktrace.out
+[2025-10-08T10:23:48+00:00] FATAL: ---------------------------------------------------------------------------------------
+[2025-10-08T10:23:48+00:00] FATAL: PLEASE PROVIDE THE CONTENTS OF THE stacktrace.out FILE (above) IF YOU FILE A BUG REPORT
+[2025-10-08T10:23:48+00:00] FATAL: ---------------------------------------------------------------------------------------
+[2025-10-08T10:23:48+00:00] FATAL: Net::HTTPClientException: 412 "Precondition Failed"
+[root@ip-172-31-7-17 ec2-user]# chef-client
+Chef Infra Client, version 18.8.11
+Patents: https://www.chef.io/patents
+Infra Phase starting
+[2025-10-08T10:24:31+00:00] ERROR: shard_seed: Failed to get dmi property serial_number: is dmidecode installed?
+Resolving cookbooks for run list: []
+Synchronizing cookbooks:
+Installing cookbook gem dependencies:
+Compiling cookbooks...
+Loading Chef InSpec profile files:
+Loading Chef InSpec input files:
+Loading Chef InSpec waiver files:
+[2025-10-08T10:24:32+00:00] WARN: Node Webserver has an empty run list.
+Converging 0 resources
+
+Running handlers:
+Running handlers complete
+Infra Phase complete, 0/0 resources updated in 02 seconds
+[root@ip-172-31-7-17 ec2-user]# chef-client
+Chef Infra Client, version 18.8.11
+Patents: https://www.chef.io/patents
+Infra Phase starting
+[2025-10-08T10:24:53+00:00] ERROR: shard_seed: Failed to get dmi property serial_number: is dmidecode installed?
+Resolving cookbooks for run list: []
+Synchronizing cookbooks:
+Installing cookbook gem dependencies:
+Compiling cookbooks...
+Loading Chef InSpec profile files:
+Loading Chef InSpec input files:
+Loading Chef InSpec waiver files:
+[2025-10-08T10:24:53+00:00] WARN: Node Webserver has an empty run list.
+Converging 0 resources
+
+Running handlers:
+Running handlers complete
+Infra Phase complete, 0/0 resources updated in 02 seconds
+[root@ip-172-31-7-17 ec2-user]# chef-client
+Chef Infra Client, version 18.8.11
+Patents: https://www.chef.io/patents
+Infra Phase starting
+[2025-10-08T10:25:55+00:00] ERROR: shard_seed: Failed to get dmi property serial_number: is dmidecode installed?
+Resolving cookbooks for run list: ["webbook", "autobook"]
+
+================================================================================
+Error Resolving Cookbooks for Run List:
+================================================================================
+
+Missing Cookbooks:
+------------------
+The following cookbooks are required by the client but don't exist on the server:
+* autobook
+
+
+Expanded Run List:
+------------------
+* webbook
+* autobook
+
+System Info:
+------------
+chef_version=18.8.11
+platform=amazon
+platform_version=2023
+ruby=ruby 3.1.7p261 (2025-03-26 revision 0a3704f218) [x86_64-linux]
+program_name=/usr/bin/chef-client
+executable=/opt/chef/bin/chef-client
+
+
+Running handlers:
+[2025-10-08T10:25:55+00:00] ERROR: Running exception handlers
+Running handlers complete
+[2025-10-08T10:25:55+00:00] ERROR: Exception handlers complete
+Infra Phase failed. 0 resources updated in 01 seconds
+[2025-10-08T10:25:55+00:00] FATAL: Stacktrace dumped to /var/chef/cache/chef-stacktrace.out
+[2025-10-08T10:25:55+00:00] FATAL: ---------------------------------------------------------------------------------------
+[2025-10-08T10:25:55+00:00] FATAL: PLEASE PROVIDE THE CONTENTS OF THE stacktrace.out FILE (above) IF YOU FILE A BUG REPORT
+[2025-10-08T10:25:55+00:00] FATAL: ---------------------------------------------------------------------------------------
+[2025-10-08T10:25:55+00:00] FATAL: Net::HTTPClientException: 412 "Precondition Failed"
+[root@ip-172-31-7-17 ec2-user]# chef-client
+Chef Infra Client, version 18.8.11
+Patents: https://www.chef.io/patents
+Infra Phase starting
+[2025-10-08T10:27:38+00:00] ERROR: shard_seed: Failed to get dmi property serial_number: is dmidecode installed?
+Resolving cookbooks for run list: ["webbook", "autobook"]
+Synchronizing cookbooks:
+  - autobook (0.1.0)
+  - webbook (0.1.0)
+Installing cookbook gem dependencies:
+Compiling cookbooks...
+Loading Chef InSpec profile files:
+Loading Chef InSpec input files:
+Loading Chef InSpec waiver files:
+Converging 0 resources
+
+Running handlers:
+Running handlers complete
+Infra Phase complete, 0/0 resources updated in 02 seconds
+[root@ip-172-31-7-17 ec2-user]# chef-client
+Chef Infra Client, version 18.8.11
+Patents: https://www.chef.io/patents
+Infra Phase starting
+[2025-10-08T10:28:46+00:00] ERROR: shard_seed: Failed to get dmi property serial_number: is dmidecode installed?
+Resolving cookbooks for run list: ["webbook", "autobook"]
+Synchronizing cookbooks:
+  - webbook (0.1.0)
+  - autobook (0.1.0)
+Installing cookbook gem dependencies:
+Compiling cookbooks...
+Loading Chef InSpec profile files:
+Loading Chef InSpec input files:
+Loading Chef InSpec waiver files:
+Converging 0 resources
+
+Running handlers:
+Running handlers complete
+Infra Phase complete, 0/0 resources updated in 02 seconds
+[root@ip-172-31-7-17 ec2-user]# ls
+[root@ip-172-31-7-17 ec2-user]# cd var
+bash: cd: var: No such file or directory
+[root@ip-172-31-7-17 ec2-user]# cd ..
+[root@ip-172-31-7-17 home]# cd var
+bash: cd: var: No such file or directory
+[root@ip-172-31-7-17 home]# ls
+ec2-user
+[root@ip-172-31-7-17 home]# cd ..
+[root@ip-172-31-7-17 /]# ls
+bin  boot  dev  etc  home  lib  lib64  local  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+[root@ip-172-31-7-17 /]# cd var
+[root@ip-172-31-7-17 var]# ls
+account  adm  cache  chef  db  empty  ftp  games  kerberos  lib  local  lock  log  mail  nis  opt  preserve  run  spool  tmp  yp
+[root@ip-172-31-7-17 var]# sudo systemctl status httpd
+Unit httpd.service could not be found.
+[root@ip-172-31-7-17 var]# cd ..
+[root@ip-172-31-7-17 /]# cd home
+[root@ip-172-31-7-17 home]# cd ec2-user/
+[root@ip-172-31-7-17 ec2-user]# ls
+[root@ip-172-31-7-17 ec2-user]# cls
+bash: cls: command not found
+[root@ip-172-31-7-17 ec2-user]#
+[root@ip-172-31-7-17 ec2-user]# chef-client
+Chef Infra Client, version 18.8.11
+Patents: https://www.chef.io/patents
+Infra Phase starting
+[2025-10-08T10:37:10+00:00] ERROR: shard_seed: Failed to get dmi property serial_number: is dmidecode installed?
+Resolving cookbooks for run list: ["webbook", "autobook"]
+Synchronizing cookbooks:
+  - webbook (0.1.0)
+  - autobook (0.1.0)
+Installing cookbook gem dependencies:
+Compiling cookbooks...
+Loading Chef InSpec profile files:
+Loading Chef InSpec input files:
+Loading Chef InSpec waiver files:
+Converging 0 resources
+
+Running handlers:
+Running handlers complete
+Infra Phase complete, 0/0 resources updated in 02 seconds
+[root@ip-172-31-7-17 ec2-user]# chef-client
+Chef Infra Client, version 18.8.11
+Patents: https://www.chef.io/patents
+Infra Phase starting
+[2025-10-08T10:39:50+00:00] ERROR: shard_seed: Failed to get dmi property serial_number: is dmidecode installed?
+Resolving cookbooks for run list: ["webbook::web", "autobook::auto"]
+Synchronizing cookbooks:
+  - webbook (0.1.0)
+  - autobook (0.1.0)
+Installing cookbook gem dependencies:
+Compiling cookbooks...
+Loading Chef InSpec profile files:
+Loading Chef InSpec input files:
+Loading Chef InSpec waiver files:
+Converging 4 resources
+Recipe: webbook::web
+  * dnf_package[httpd] action install
+    - install version 0:2.4.64-1.amzn2023.0.1.x86_64 of package httpd
+  * service[httpd] action enable
+    - enable service service[httpd]
+  * service[httpd] action start
+    - start service service[httpd]
+  * file[/var/www/html/index.html] action create
+    - create new file /var/www/html/index.html
+    - update content in file /var/www/html/index.html from none to 8fc0bb
+    --- /var/www/html/index.html        2025-10-08 10:39:56.626527212 +0000
+    +++ /var/www/html/.chef-index20251008-8038-5njx68.html      2025-10-08 10:39:56.626527212 +0000
+    @@ -1 +1,2 @@
+    +<h1>We welcome you here !😍😍😍 </h1>
+    - change mode from '' to '0644'
+    - change owner from '' to 'root'
+    - change group from '' to 'root'
+    - restore selinux security context
+Recipe: autobook::auto
+  * cron[chef-client-run] action create
+
+    ================================================================================
+    Error executing action `create` on resource 'cron[chef-client-run]'
+    ================================================================================
+
+    Chef::Exceptions::Cron
+    ----------------------
+    Error determining state of chef-client-run, error: No such file or directory - crontab
+
+    Resource Declaration:
+    ---------------------
+    # In /var/chef/cache/cookbooks/autobook/recipes/auto.rb
+
+     19: cron 'chef-client-run' do
+     20:   minute '*/2'
+     21:   command '/bin/chef-client'
+     22:   user 'root'
+     23: end
+
+    Compiled Resource:
+    ------------------
+    # Declared in /var/chef/cache/cookbooks/autobook/recipes/auto.rb:19:in `from_file'
+
+    cron("chef-client-run") do
+      action [:create]
+      default_guard_interpreter :default
+      declared_type :cron
+      cookbook_name "autobook"
+      recipe_name "auto"
+      minute "*/2"
+      command "/bin/chef-client"
+      user "root"
+    end
+
+    System Info:
+    ------------
+    chef_version=18.8.11
+    platform=amazon
+    platform_version=2023
+    ruby=ruby 3.1.7p261 (2025-03-26 revision 0a3704f218) [x86_64-linux]
+    program_name=/usr/bin/chef-client
+    executable=/opt/chef/bin/chef-client
+
+
+Running handlers:
+[2025-10-08T10:39:56+00:00] ERROR: Running exception handlers
+Running handlers complete
+[2025-10-08T10:39:56+00:00] ERROR: Exception handlers complete
+Infra Phase failed. 4 resources updated in 07 seconds
+[2025-10-08T10:39:56+00:00] FATAL: Stacktrace dumped to /var/chef/cache/chef-stacktrace.out
+[2025-10-08T10:39:56+00:00] FATAL: ---------------------------------------------------------------------------------------
+[2025-10-08T10:39:56+00:00] FATAL: PLEASE PROVIDE THE CONTENTS OF THE stacktrace.out FILE (above) IF YOU FILE A BUG REPORT
+[2025-10-08T10:39:56+00:00] FATAL: ---------------------------------------------------------------------------------------
+[2025-10-08T10:39:56+00:00] FATAL: Chef::Exceptions::Cron: cron[chef-client-run] (autobook::auto line 19) had an error: Chef::Exceptions::Cron: Error determining state of chef-client-run, error: No such file or directory - crontab
+[root@ip-172-31-7-17 ec2-user]# chef-client
+Chef Infra Client, version 18.8.11
+Patents: https://www.chef.io/patents
+Infra Phase starting
+[2025-10-08T10:43:07+00:00] ERROR: shard_seed: Failed to get dmi property serial_number: is dmidecode installed?
+Resolving cookbooks for run list: ["webbook::web", "autobook::auto"]
+Synchronizing cookbooks:
+  - webbook (0.1.0)
+  - autobook (0.1.0)
+Installing cookbook gem dependencies:
+Compiling cookbooks...
+Loading Chef InSpec profile files:
+Loading Chef InSpec input files:
+Loading Chef InSpec waiver files:
+Converging 5 resources
+Recipe: webbook::web
+  * dnf_package[httpd] action install (up to date)
+  * service[httpd] action enable (up to date)
+  * service[httpd] action start (up to date)
+  * file[/var/www/html/index.html] action create (up to date)
+Recipe: autobook::auto
+  * dnf_package[cronie] action install
+    - install version 0:1.5.7-1.amzn2023.0.2.x86_64 of package cronie
+  * cron[chef-client-run] action create
+    - add crontab entry for cron[chef-client-run]
+
+Running handlers:
+Running handlers complete
+Infra Phase complete, 2/6 resources updated in 05 seconds
+[root@ip-172-31-7-17 ec2-user]#
+Broadcast message from root@localhost (Wed 2025-10-08 10:44:10 UTC):
+
+The system will power off now!
+
+
+Broadcast message from root@localhost (Wed 2025-10-08 10:44:10 UTC):
+
+The system will power off now!
+
+Connection to 13.234.76.10 closed by remote host.
+Connection to 13.234.76.10 closed.
+
+C:\Users\Gaurav.26\Downloads\repo\Linux-mac>

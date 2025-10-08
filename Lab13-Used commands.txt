@@ -239,4 +239,5 @@
   238  knife node list
   239  knife bootstrap 172.31.7.128 -N node2 --ssh-user ec2-user --ssh-identity-file id_rsa.pem --sudo -VV
   240  knife node list
-  241  history
+  241  knife bootstrap 172.31.5.99 -N mynode --ssh-user ec2-user --ssh-identity-file id_rsa.pem --sudo --run_list 'role[webrole]'
+  242  history
